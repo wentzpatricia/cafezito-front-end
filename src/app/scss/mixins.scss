@@ -1,0 +1,21 @@
+$medium-web: 1180px;
+$tablet-width: 782px;
+$mobile-width: 520px;
+
+@mixin medium-web {
+  @media only screen and (max-width: $medium-web) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media only screen and (max-width: $tablet-width) {
+    @content;
+  }
+}
+
+@mixin mobile {
+  @media only screen and (max-width: $mobile-width) {
+    @content;
+  }
+}
