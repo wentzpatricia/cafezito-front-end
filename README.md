@@ -1,5 +1,9 @@
 # Cafezito
 
+Para arquitetura do projeto vamos seguir este exemplo
+
+[Arquitetura](https://belmirofss.medium.com/minha-nova-estrutura-de-pastas-para-angular-escal%C3%A1vel-limpa-e-f%C3%A1cil-93b6ffb203d9)
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.8.
 
 ## Development server
