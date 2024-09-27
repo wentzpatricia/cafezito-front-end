@@ -14,7 +14,7 @@ export class LoginComponent implements OnInit {
   formLogIn!: FormGroup;
   hide: boolean = true;
   image = '../../../../assets/images/bg-login.png';
-  logo = '../../../../assets/icones/logo-dark.png';
+  logo = '../../../../assets/icones/logo-completo-dark.svg';
   logoLight = '../../../../assets/icones/logo-light.png';
   
   constructor(

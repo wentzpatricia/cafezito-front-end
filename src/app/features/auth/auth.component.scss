@@ -25,7 +25,9 @@
             width: 50%;
 
             .img-logo {
-                margin-bottom: 15px;
+                position: absolute;
+                top: 50px;
+                width: 250px;
             }
 
             @include medium-web {
@@ -76,7 +78,7 @@
 
     &__logo {
         width: 70%;
-        @include medium-web {
+        @include tablet {
             display: none;
         }
 
