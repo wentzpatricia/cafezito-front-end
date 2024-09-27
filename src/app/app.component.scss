@@ -1,0 +1,15 @@
+
+a, ul, li { text-decoration: none; list-style: none; }
+
+body {
+    font-family: "Montserrat", Helvetica, sans-serif;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+  
+//scrollbar
+body::-webkit-scrollbar { width: 6px; }
+body::-webkit-scrollbar-track { background: $gray-200; }
+body::-webkit-scrollbar-thumb { background-color: var(--primary); border-radius: 20px; }

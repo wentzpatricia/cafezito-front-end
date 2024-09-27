@@ -1,2 +1,19 @@
 /* You can add global styles to this file, and also import other style files */
 @import "primeicons/primeicons.css";
+@import "./app/core/scss/variables.scss";
+
+a, ul, li { text-decoration: none; list-style: none; }
+
+body {
+    color: $black;
+    font-family: "Montserrat", Helvetica, sans-serif;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+  
+//scrollbar
+body::-webkit-scrollbar { width: 6px; }
+body::-webkit-scrollbar-track { background: var(--surface-100); }
+body::-webkit-scrollbar-thumb { background-color: var(--primary-color); border-radius: 20px; }

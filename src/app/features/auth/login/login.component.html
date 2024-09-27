@@ -1,0 +1,43 @@
+<div class="container-login">
+    <div class="container-login__logo">
+        <img class="logo-light" src="{{ logoLight }}" alt="Logo do sistema" />
+        <img class="bg-login" src="{{ image }}" alt="Imagem de uma xícara cheia de café" />
+    </div>
+    <div class="container-login__login"> 
+        <div class="form">
+            <img src="{{ logo }}" alt="Logo" class="img-logo"/>
+            <h3 class="form__title">Seja bem-vindo</h3>
+            <p class="form__subtitle">Por favor, entre com seus dados de acesso.</p>
+            <form [formGroup]="formLogIn">
+                <div class="container-input">
+                    <span class="p-float-label input">
+                        <input [ngClass]="{ 'ng-invalid ng-dirty': formLogIn.touched && formLogIn.get('email')?.invalid }" type="text" pInputText id="email" pInputText formControlName="email" placeholder="seuemail@email.com" />
+                        <label for="email">E-mail</label>
+                    </span>
+                    <div *ngIf="formLogIn.touched && formLogIn.get('email')?.invalid" class="invalid-feedback">
+                        <span *ngIf="formLogIn.get('email')?.errors?.['required']">E-mail é um campo obrigatório. </span>
+                        <span *ngIf="formLogIn.get('email')?.errors?.['email']">E-mail Inválido. </span>
+                    </div>
+                </div>
+
+                <div class="container-input">
+                    <span class="p-float-label p-input-icon-right input">
+                        <i [class]="hide ? 'pi pi-eye-slash' : 'pi pi-eye'" (click)="showHidePassword()"></i>
+                        <input [ngClass]="{ 'ng-invalid ng-dirty': formLogIn.touched && formLogIn.get('password')?.invalid }" type="text" pInputText formControlName="password" (keyup.enter)="formLogIn.valid ? doLogin() : ''" [type]="hide ? 'password' : 'text'" />
+                        <label for="password">Senha</label>
+                    </span>
+                    <div *ngIf="formLogIn.touched && formLogIn.get('password')?.invalid" class="invalid-feedback">
+                        <span *ngIf="formLogIn.get('password')?.errors?.['required']">Senha é um campo obrigatório. </span>
+                    </div>
+                </div>
+                
+                <p class="invalid-feedback" *ngIf=errorMessage>{{errorMessage}}</p>
+                
+                <div class="btn-forgot-password">
+                    <p-button size="small" label="Esqueci minha senha" [text]="true" [routerLink]="['/auth/forget-password']"></p-button>
+                </div>
+                <p-button size="small" label="Entrar" (click)="doLogin()" [disabled]="!formLogIn.valid"></p-button> 
+            </form>
+        </div>
+    </div>
+</div>
