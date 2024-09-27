@@ -12,4 +12,9 @@ export const routes: Routes = [
     loadChildren: () =>
       import('./features/home/home.module').then((m) => m.HomeModule),
   },
+  {
+    path: 'coffe-shops',
+    loadChildren: () =>
+      import('./features/coffe-shop/coffe-shop.module').then((m) => m.CoffeShopModule),
+  },
 ];
