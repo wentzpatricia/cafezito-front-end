@@ -38,6 +38,9 @@
                 </div>
                 <p-button size="small" label="Entrar" (click)="doLogin()" [disabled]="!formLogIn.valid"></p-button> 
             </form>
+            <div class="btn-create-account">
+                <span>Não tem conta? </span><p-button size="small"  label="Crie agora!" [text]="true" [routerLink]="['/auth/register']"></p-button>
+            </div>
         </div>
     </div>
 </div>

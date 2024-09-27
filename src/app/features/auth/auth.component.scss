@@ -22,7 +22,13 @@
             display: flex;
             flex-direction: column;
             margin: auto;
-            width: 50%;
+            width: 60%;
+
+            .btn-create-account {
+                align-items: center;
+                display: flex;
+                margin-top: 15px;
+            }
 
             .img-logo {
                 position: absolute;
@@ -41,7 +47,7 @@
                 .btn-forgot-password {
                     display: flex;
                     justify-content: flex-end;
-                    margin: -6px 0 10px 0;
+                    margin: -55px 0 10px 0;
                 }
 
                 ::ng-deep button.p-ripple.p-element.p-button.p-component.p-disabled.p-button-sm,

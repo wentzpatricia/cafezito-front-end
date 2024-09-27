@@ -9,9 +9,11 @@ import { InputTextModule } from 'primeng/inputtext';
 
 import { AuthComponent } from './auth.component';
 import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
+
 
 @NgModule({
-  declarations: [AuthComponent, LoginComponent],
+  declarations: [AuthComponent, LoginComponent, RegisterComponent],
   imports: [
     AuthRoutingModule,
     ButtonModule,

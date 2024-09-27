@@ -1,0 +1,50 @@
+<div class="container-login">
+    <div class="container-login__logo">
+        <img class="logo-light" src="{{ logoLight }}" alt="Logo do sistema" />
+        <img class="bg-login" src="{{ image }}" alt="Imagem de uma xícara cheia de café" />
+    </div>
+    <div class="container-login__login"> 
+        <div class="form">
+            <img src="{{ logo }}" alt="Logo" class="img-logo"/>
+            <p class="form__subtitle">Registre-se e encontre a cafeteria perfeita para você</p>
+            <form [formGroup]="form">
+                <div class="container-input">
+                    <span class="p-float-label input">
+                        <input [ngClass]="{ 'ng-invalid ng-dirty': form.touched && form.get('email')?.invalid }" type="text" pInputText id="email" pInputText formControlName="email" placeholder="seuemail@email.com" />
+                        <label for="email">E-mail</label>
+                    </span>
+                    <div *ngIf="form.touched && form.get('email')?.invalid" class="invalid-feedback">
+                        <span *ngIf="form.get('email')?.errors?.['required']">E-mail é um campo obrigatório. </span>
+                        <span *ngIf="form.get('email')?.errors?.['email']">E-mail Inválido. </span>
+                    </div>
+                </div>
+
+                <div class="container-input">
+                    <span class="p-float-label p-input-icon-right input">
+                        <i [class]="hide ? 'pi pi-eye-slash' : 'pi pi-eye'" (click)="showHidePassword()"></i>
+                        <input [ngClass]="{ 'ng-invalid ng-dirty': form.touched && form.get('password')?.invalid }" type="text" pInputText formControlName="password" [type]="hide ? 'password' : 'text'" />
+                        <label for="password">Senha</label>
+                    </span>
+                    <div *ngIf="form.touched && form.get('password')?.invalid" class="invalid-feedback">
+                        <span *ngIf="form.get('password')?.errors?.['required']">Senha é um campo obrigatório. </span>
+                    </div>
+                </div>
+
+                <div class="container-input">
+                    <span class="p-float-label p-input-icon-right input">
+                        <i [class]="hideConfirm ? 'pi pi-eye-slash' : 'pi pi-eye'" (click)="showHideConfirmPassword()"></i>
+                        <input [ngClass]="{ 'ng-invalid ng-dirty': form.touched && form.get('confirmPassword')?.invalid }" type="text" pInputText formControlName="confirmPassword" (keyup.enter)="form.valid ? doRegister() : ''" [type]="hideConfirm ? 'password' : 'text'" />
+                        <label for="confirmPassword">Confirmação de senha</label>
+                    </span>
+                    <div *ngIf="form.touched && form.get('confirmPassword')?.invalid" class="invalid-feedback">
+                        <span *ngIf="form.get('confirmPassword')?.hasError('invalidPassword')">Senhas não são iguais.</span>
+                    </div>
+                </div>
+                
+                <p class="invalid-feedback" *ngIf=errorMessage>{{errorMessage}}</p>
+                
+                <p-button size="small" label="Registrar" (click)="doRegister()" [disabled]="!form.valid"></p-button> 
+            </form>
+        </div>
+    </div>
+</div>
