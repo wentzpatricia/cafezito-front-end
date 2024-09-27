@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
+import { AuthGuard } from './core/guards/auth.guard';
 
 export const routes: Routes = [
-  { path: '', redirectTo: '/home', pathMatch: 'full' },
   {
     path: 'auth',
     loadChildren: () =>
@@ -13,8 +13,11 @@ export const routes: Routes = [
       import('./features/home/home.module').then((m) => m.HomeModule),
   },
   {
-    path: 'coffe-shops',
+    path: 'coffe-shop',
+    canActivate: [AuthGuard],
     loadChildren: () =>
       import('./features/coffe-shop/coffe-shop.module').then((m) => m.CoffeShopModule),
   },
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: '**', redirectTo: 'home' } 
 ];
