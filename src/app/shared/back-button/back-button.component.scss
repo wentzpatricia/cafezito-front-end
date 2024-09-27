@@ -1,0 +1,11 @@
+@import "../../core//scss/variables.scss";
+
+.container-button-back {
+    align-items: center;
+    color: var(--primary-color);
+    cursor: pointer;
+    display: flex;
+    font-weight: $font-weight-bold;
+
+    &:hover { color: var(--focus-button); }
+}
