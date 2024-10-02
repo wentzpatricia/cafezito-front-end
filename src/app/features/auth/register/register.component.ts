@@ -67,10 +67,9 @@ export class RegisterComponent implements OnInit {
     const body: User = { email, password };
     
     this.postRegisterUserService.postRegisterUser(body).subscribe({
-      next: (res: ApiResponseModel<any>) => {
-        console.log(res)
-        console.log("Usuário criado!")
+      next: () => {
         this.router.navigate(['auth/login']);
+        this.form.reset();
       }, 
       error: (err) => {
         this.errorMessage = err.error.message;

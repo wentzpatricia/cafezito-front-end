@@ -80,13 +80,6 @@
             <label for="confirmPassword">Confirmação de senha</label>
           </span>
 
-          @if (form.touched && form.get('confirmPassword')?.invalid) {
-            <div class="invalid-feedback">
-              @if (form.get('confirmPassword')?.hasError('invalidPassword')) {
-                <span>Senhas não são iguais.</span>
-              }
-            </div>
-          }
         </div>
 
         <app-password-validator 
@@ -105,6 +98,7 @@
           (click)="doRegister()"
           [disabled]="!form.valid"
         ></p-button>
+        
       </form>
     </div>
   </div>
