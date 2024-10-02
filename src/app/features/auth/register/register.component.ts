@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 import { LocalStorageUtils } from '../../../core/utils/localstorage';
-import { Validations } from '../../../core/utils/validations';
+import { Validations } from '../../../core/validators/validations';
 
 import { PostRegisterUserService } from './_services/post-register-user.service';
 
@@ -36,8 +36,25 @@ export class RegisterComponent implements OnInit {
   createForm() {
     this.form = this.formBuilder.group({
         email: ['', [Validators.email, Validators.required]],
-        password: ['', Validators.required],
-        confirmPassword: ['', Validators.required],
+        password: [
+          '', Validators.compose([
+            Validators.required,
+            Validators.minLength(8),
+            Validations.patternValidator(new RegExp("(?=.*[0-9])"), {
+              requiresDigit: true
+            }),
+            Validations.patternValidator(new RegExp("(?=.*[A-Z])"), {
+              requiresUppercase: true
+            }),
+            Validations.patternValidator(new RegExp("(?=.*[a-z])"), {
+              requiresLowercase: true
+            }),
+            Validations.patternValidator(new RegExp("(?=.*[$@^!%*?&])"), {
+              requiresSpecialChars: true
+            })
+          ])
+        ],
+        confirmPassword: ['', [Validators.required, Validators.minLength(8)]],
       },{
         validator: Validations.verifyPassword,
       }
@@ -61,7 +78,6 @@ export class RegisterComponent implements OnInit {
       }
     })
 
-    
   }
 
   showHideConfirmPassword() {
