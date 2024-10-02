@@ -2,13 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
-import { LocalStorageUtils } from '../../../core/utils/localstorage';
-import { Validations } from '../../../core/validators/validations';
+import { MessageService } from 'primeng/api';
 
 import { PostRegisterUserService } from './_services/post-register-user.service';
-
-import { ApiResponseModel } from '../../../core/models/api-response.interface';
 import { User } from './_models/user.interface';
+import { Validations } from '../../../core/validators/validations';
+
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -25,6 +24,7 @@ export class RegisterComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
+    private messageService: MessageService,
     private postRegisterUserService: PostRegisterUserService,
     private router: Router
   ) { }
@@ -68,15 +68,16 @@ export class RegisterComponent implements OnInit {
     
     this.postRegisterUserService.postRegisterUser(body).subscribe({
       next: () => {
-        this.router.navigate(['auth/login']);
         this.form.reset();
+        setTimeout(()=> { this.router.navigate(['auth/login']); }, 1000)
+        this.messageService.add({ severity: 'success', summary: 'Successo', detail: 'Conta criada!' });
       }, 
       error: (err) => {
         this.errorMessage = err.error.message;
+        this.messageService.add({ severity: 'error', summary: 'Erro', detail: this.errorMessage });
         console.error(err);
       }
     })
-
   }
 
   showHideConfirmPassword() {
