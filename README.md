@@ -2,11 +2,17 @@
 <details>
 <summary>Clique para expandir</summary>
   
-## [Elevator Pitch] (elevator_pitch.md)
+## [Elevator Pitch](elevator_pitch.md)
 
-## [Canva MVP] (canvas-mvp.md)
+## [Canva MVP](canva-mvp.md)
 
-## [Planejamento da Release] (planejamento_planning.md)
+## [Planejamento da Release](planning_release.md)
+
+## [Arquitetura](architeture.md)
+
+## [Testes e Validações](validation_tests.md)
+
+## [POSTMORTEM](POSTMORTEM.md)
 
 </details>
 
