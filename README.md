@@ -1,3 +1,16 @@
+## Documentação e Artefatos
+<details>
+<summary>Clique para expandir</summary>
+  
+## [Elevator Pitch] (elevator_pitch.md)
+
+## [Canva MVP] (canvas-mvp.md)
+
+## [Planejamento da Release] (planejamento_planning.md)
+
+</details>
+
+
 # Cafezito
 
 Para arquitetura do projeto vamos seguir este exemplo
