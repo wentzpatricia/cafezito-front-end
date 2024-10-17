@@ -11,11 +11,16 @@ import { Validations } from '../../../core/validators/validations';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styles: [` @import './../auth.component.scss'; `]
+  styles: [
+    `
+      @import './../auth.component.scss';
+    `,
+  ],
 })
 export class RegisterComponent implements OnInit {
-  errorMessage!: string;
+  errorMessage!: string | null;
   form!: FormGroup;
+  isLoading: boolean = false;
   hide: boolean = true;
   hideConfirm: boolean = true;
   image = '../../../../assets/images/bg-login.png';
@@ -27,57 +32,84 @@ export class RegisterComponent implements OnInit {
     private messageService: MessageService,
     private postRegisterUserService: PostRegisterUserService,
     private router: Router
-  ) { }
+  ) {}
 
   ngOnInit(): void {
-   this.createForm();
+    this.createForm();
+
+    this.form.valueChanges.subscribe(() => {
+      this.errorMessage = null;
+    });
   }
-  
+
   createForm() {
-    this.form = this.formBuilder.group({
+    this.form = this.formBuilder.group(
+      {
         email: ['', [Validators.email, Validators.required]],
         password: [
-          '', Validators.compose([
+          '',
+          Validators.compose([
             Validators.required,
             Validators.minLength(8),
-            Validations.patternValidator(new RegExp("(?=.*[0-9])"), {
-              requiresDigit: true
+            Validations.patternValidator(new RegExp('(?=.*[0-9])'), {
+              requiresDigit: true,
             }),
-            Validations.patternValidator(new RegExp("(?=.*[A-Z])"), {
-              requiresUppercase: true
+            Validations.patternValidator(new RegExp('(?=.*[A-Z])'), {
+              requiresUppercase: true,
             }),
-            Validations.patternValidator(new RegExp("(?=.*[a-z])"), {
-              requiresLowercase: true
+            Validations.patternValidator(new RegExp('(?=.*[a-z])'), {
+              requiresLowercase: true,
             }),
-            Validations.patternValidator(new RegExp("(?=.*[$@^!%*?&])"), {
-              requiresSpecialChars: true
-            })
-          ])
+            Validations.patternValidator(new RegExp('(?=.*[$@^!%*?&])'), {
+              requiresSpecialChars: true,
+            }),
+          ]),
         ],
         confirmPassword: ['', [Validators.required, Validators.minLength(8)]],
-      },{
+      },
+      {
         validator: Validations.verifyPassword,
       }
     );
   }
 
   doRegister() {
-
     const { email, password } = this.form.value;
     const body: User = { email, password };
-    
+
+    this.isLoading = true;
+
     this.postRegisterUserService.postRegisterUser(body).subscribe({
       next: () => {
         this.form.reset();
-        setTimeout(()=> { this.router.navigate(['auth/login']); }, 1000)
-        this.messageService.add({ severity: 'success', summary: 'Successo', detail: 'Conta criada!' });
-      }, 
+
+        setTimeout(() => {
+          this.router.navigate(['auth/login']);
+        }, 1000);
+
+        this.messageService.add({
+          severity: 'success',
+          summary: 'Successo',
+          detail: 'Conta criada!',
+        });
+
+        this.isLoading = false;
+      },
       error: (err) => {
         this.errorMessage = err.error.message;
-        this.messageService.add({ severity: 'error', summary: 'Erro', detail: this.errorMessage });
+
+        if (this.errorMessage)
+          this.messageService.add({
+            severity: 'error',
+            summary: 'Erro',
+            detail: this.errorMessage,
+          });
+
+        this.isLoading = false;
+
         console.error(err);
-      }
-    })
+      },
+    });
   }
 
   showHideConfirmPassword() {

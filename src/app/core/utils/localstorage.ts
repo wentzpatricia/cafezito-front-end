@@ -1,19 +1,21 @@
 export class LocalStorageUtils {
+  private _ib_user: string = 'ib.u';
 
-    public clearLoggedData(key: string) {
-      localStorage.removeItem(key);
-    }
-  
-    public getItem(key: string): any {
-      const item = localStorage.getItem(key);
-      return item !== null ? JSON.parse(item) : null;
-    }
-      
-    public setItem(key: string, value: any): void {
-      localStorage.setItem(key, JSON.stringify(value));
-    }
-      
-    public removeItem(key: string): void {
-      localStorage.removeItem(key);
-    }
+  clearLoggedData() {
+    localStorage.removeItem(this._ib_user);
   }
+
+  //TODO ajustar tipagem
+  getUser(): any | null {
+    const user = localStorage.getItem(this._ib_user);
+
+    if (!user) return null;
+
+    return user;
+  }
+
+  //TODO ajustar tipagem
+  saveUser(user: any) {
+    localStorage.setItem(this._ib_user, JSON.stringify(user));
+  }
+}

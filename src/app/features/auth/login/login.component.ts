@@ -1,27 +1,36 @@
 import { Component, OnInit } from '@angular/core';
-import { LocalStorageUtils } from '../../../core/utils/localstorage';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { AuthGuard } from '../../../core/guards/auth.guard';
 import { Router } from '@angular/router';
+
+import { AuthGuard } from '../../../core/guards/auth.guard';
+import { LoginService } from './_services/login.service';
+
+import { ApiResponseModel } from '../../../core/models/api-response.interface';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styles: [` @import './../auth.component.scss'; ` ]
+  styles: [
+    `
+      @import './../auth.component.scss';
+    `,
+  ],
 })
 export class LoginComponent implements OnInit {
-  errorMessage!: string;
+  errorMessage!: string | null;
   formLogIn!: FormGroup;
+  isLoading: boolean = false;
   hide: boolean = true;
   image = '../../../../assets/images/bg-login.png';
   logo = '../../../../assets/icones/logo-completo-dark.svg';
   logoLight = '../../../../assets/icones/logo-light.png';
-  
+
   constructor(
     private authService: AuthGuard,
     private formBuilder: FormBuilder,
+    private loginService: LoginService,
     private router: Router
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     this.createForm();
@@ -29,6 +38,10 @@ export class LoginComponent implements OnInit {
     if (this.isUserAuthenticated()) {
       this.router.navigate(['/coffe-shop']);
     }
+
+    this.formLogIn.valueChanges.subscribe(() => {
+      this.errorMessage = null;
+    });
   }
 
   createForm() {
@@ -38,26 +51,27 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  doLogin(){
-    const email = this.formLogIn.get('email')?.value;
-    const password = this.formLogIn.get('password')?.value;
-    const localStorageUtils = new LocalStorageUtils();
-    if (email === 'cafezito@gmail.com' && password === '1234') {
-      localStorageUtils.setItem('login', true)
-      
-    } else {
-      this.errorMessage = 'Email ou senha inválidos. Por favor, tente novamente.';
-    }
-    if(this.authService.canActivate()){
-      this.router.navigate(['/coffe-shop']);
-    }
+  doLogin() {
+    this.isLoading = true;
+
+    this.loginService.postLogin(this.formLogIn.value).subscribe({
+      next: (res: ApiResponseModel<any>) => {
+        this.loginService.localStorageUtils.saveUser(res);
+        this.router.navigate(['/coffe-shop']);
+        this.isLoading = false;
+      },
+      error: (err) => {
+        this.errorMessage = err.error.message;
+        this.isLoading = false;
+      },
+    });
   }
 
   isUserAuthenticated(): boolean {
     return this.authService.isAuthenticated();
   }
 
-  showHidePassword(){
+  showHidePassword() {
     this.hide = !this.hide;
   }
 }
