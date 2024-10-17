@@ -1,7 +1,11 @@
 <div class="container-login">
   <div class="container-login__logo">
     <img class="logo-light" src="{{ logoLight }}" alt="Logo do sistema" />
-    <img class="bg-login" src="{{ image }}" alt="Imagem de uma xícara cheia de café" />
+    <img
+      class="bg-login"
+      src="{{ image }}"
+      alt="Imagem de uma xícara cheia de café"
+    />
   </div>
   <div class="container-login__login">
     <div class="form">
@@ -12,79 +16,89 @@
         <div class="container-input">
           <span class="p-float-label input">
             <input
-              [ngClass]="{ 'ng-invalid ng-dirty': formLogIn.touched && formLogIn.get('email')?.invalid }"
+              [ngClass]="{
+                'ng-invalid ng-dirty':
+                  formLogIn.touched && formLogIn.get('email')?.invalid
+              }"
               type="text"
               pInputText
               id="email"
               formControlName="email"
               placeholder="seuemail@email.com"
-              />
-              <label for="email">E-mail</label>
-            </span>
-            @if (formLogIn.touched && formLogIn.get('email')?.invalid) {
-              <div class="invalid-feedback">
-                @if (formLogIn.get('email')?.errors?.['required']) {
-                  <span>E-mail é um campo obrigatório.</span>
-                }
-                @if (formLogIn.get('email')?.errors?.['email']) {
-                  <span>E-mail Inválido.</span>
-                }
-              </div>
+            />
+            <label for="email">E-mail</label>
+          </span>
+          @if (formLogIn.touched && formLogIn.get('email')?.invalid) {
+          <div class="invalid-feedback">
+            @if (formLogIn.get('email')?.errors?.['required']) {
+            <span>E-mail é um campo obrigatório.</span>
+            } @if (formLogIn.get('email')?.errors?.['email']) {
+            <span>E-mail Inválido.</span>
             }
           </div>
-
-          <div class="container-input">
-            <span class="p-float-label p-input-icon-right input">
-              <i
-                [class]="hide ? 'pi pi-eye-slash' : 'pi pi-eye'"
-              (click)="showHidePassword()"></i>
-              <input
-                [ngClass]="{ 'ng-invalid ng-dirty': formLogIn.touched && formLogIn.get('password')?.invalid }"
-                type="text"
-                pInputText
-                formControlName="password"
-                (keyup.enter)="formLogIn.valid ? doLogin() : ''"
-                [type]="hide ? 'password' : 'text'"
-                />
-                <label for="password">Senha</label>
-              </span>
-              @if (formLogIn.touched && formLogIn.get('password')?.invalid) {
-                <div class="invalid-feedback">
-                  @if (formLogIn.get('password')?.errors?.['required']) {
-                    <span>Senha é um campo obrigatório.</span>
-                  }
-                </div>
-              }
-            </div>
-
-            @if (errorMessage) {
-              <p class="invalid-feedback">{{ errorMessage }}</p>
-            }
-
-            <div class="btn-forgot-password">
-              <p-button
-                size="small"
-                label="Esqueci minha senha"
-                [text]="true"
-                [routerLink]="['/auth/forget-password']">
-              </p-button>
-            </div>
-            <p-button
-              size="small"
-              label="Entrar"
-              (click)="doLogin()"
-              [disabled]="!formLogIn.valid">
-            </p-button>
-          </form>
-          <div class="btn-create-account">
-            <span>Não tem conta? </span>
-            <p-button
-              size="small"
-              label="Crie agora!"
-              [text]="true"
-              [routerLink]="['/auth/register']">
-            </p-button>
-          </div>
+          }
         </div>
+
+        <div class="container-input">
+          <span class="p-float-label p-input-icon-right input">
+            <i
+              [class]="hide ? 'pi pi-eye-slash' : 'pi pi-eye'"
+              (click)="showHidePassword()"
+            ></i>
+            <input
+              [ngClass]="{
+                'ng-invalid ng-dirty':
+                  formLogIn.touched && formLogIn.get('password')?.invalid
+              }"
+              type="text"
+              pInputText
+              formControlName="password"
+              (keyup.enter)="formLogIn.valid ? doLogin() : ''"
+              [type]="hide ? 'password' : 'text'"
+            />
+            <label for="password">Senha</label>
+          </span>
+          @if (formLogIn.touched && formLogIn.get('password')?.invalid) {
+          <div class="invalid-feedback">
+            @if (formLogIn.get('password')?.errors?.['required']) {
+            <span>Senha é um campo obrigatório.</span>
+            }
+          </div>
+          }
+        </div>
+
+        @if (errorMessage) {
+        <p class="invalid-feedback">{{ errorMessage }}</p>
+        }
+
+        <div class="btn-forgot-password">
+          <p-button
+            size="small"
+            label="Esqueci minha senha"
+            [text]="true"
+            [routerLink]="['/auth/forget-password']"
+          >
+          </p-button>
+        </div>
+        <p-button
+          [loading]="isLoading"
+          size="small"
+          label="Entrar"
+          (click)="doLogin()"
+          [disabled]="!formLogIn.valid"
+        >
+        </p-button>
+      </form>
+      <div class="btn-create-account">
+        <span>Não tem conta? </span>
+        <p-button
+          size="small"
+          label="Crie agora!"
+          [text]="true"
+          [routerLink]="['/auth/register']"
+        >
+        </p-button>
       </div>
     </div>
+  </div>
+</div>

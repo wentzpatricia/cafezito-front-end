@@ -1,17 +1,26 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { LocalStorageUtils } from '../../../core/utils/localstorage';
-import { Validations } from '../../../core/utils/validations';
+
+import { MessageService } from 'primeng/api';
+
+import { PostRegisterUserService } from './_services/post-register-user.service';
+import { User } from './_models/user.interface';
+import { Validations } from '../../../core/validators/validations';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styles: [` @import './../auth.component.scss'; `]
+  styles: [
+    `
+      @import './../auth.component.scss';
+    `,
+  ],
 })
 export class RegisterComponent implements OnInit {
-  errorMessage!: string;
+  errorMessage!: string | null;
   form!: FormGroup;
+  isLoading: boolean = false;
   hide: boolean = true;
   hideConfirm: boolean = true;
   image = '../../../../assets/images/bg-login.png';
@@ -20,29 +29,87 @@ export class RegisterComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
+    private messageService: MessageService,
+    private postRegisterUserService: PostRegisterUserService,
     private router: Router
-  ) { }
+  ) {}
 
   ngOnInit(): void {
-   this.createForm();
+    this.createForm();
+
+    this.form.valueChanges.subscribe(() => {
+      this.errorMessage = null;
+    });
   }
-  
+
   createForm() {
-    this.form = this.formBuilder.group({
+    this.form = this.formBuilder.group(
+      {
         email: ['', [Validators.email, Validators.required]],
-        password: ['', Validators.required],
-        confirmPassword: ['', Validators.required],
-      },{
+        password: [
+          '',
+          Validators.compose([
+            Validators.required,
+            Validators.minLength(8),
+            Validations.patternValidator(new RegExp('(?=.*[0-9])'), {
+              requiresDigit: true,
+            }),
+            Validations.patternValidator(new RegExp('(?=.*[A-Z])'), {
+              requiresUppercase: true,
+            }),
+            Validations.patternValidator(new RegExp('(?=.*[a-z])'), {
+              requiresLowercase: true,
+            }),
+            Validations.patternValidator(new RegExp('(?=.*[$@^!%*?&])'), {
+              requiresSpecialChars: true,
+            }),
+          ]),
+        ],
+        confirmPassword: ['', [Validators.required, Validators.minLength(8)]],
+      },
+      {
         validator: Validations.verifyPassword,
       }
     );
   }
 
   doRegister() {
-    console.log("Usuário criado!")
-    const localStorageUtils = new LocalStorageUtils();
-    localStorageUtils.setItem('login', true)
-    this.router.navigate(['/coffe-shop']);
+    const { email, password } = this.form.value;
+    const body: User = { email, password };
+
+    this.isLoading = true;
+
+    this.postRegisterUserService.postRegisterUser(body).subscribe({
+      next: () => {
+        this.form.reset();
+
+        setTimeout(() => {
+          this.router.navigate(['auth/login']);
+        }, 1000);
+
+        this.messageService.add({
+          severity: 'success',
+          summary: 'Successo',
+          detail: 'Conta criada!',
+        });
+
+        this.isLoading = false;
+      },
+      error: (err) => {
+        this.errorMessage = err.error.message;
+
+        if (this.errorMessage)
+          this.messageService.add({
+            severity: 'error',
+            summary: 'Erro',
+            detail: this.errorMessage,
+          });
+
+        this.isLoading = false;
+
+        console.error(err);
+      },
+    });
   }
 
   showHideConfirmPassword() {
