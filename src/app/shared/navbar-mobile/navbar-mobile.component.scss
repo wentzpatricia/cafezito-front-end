@@ -15,6 +15,7 @@
   display: none !important;
 }
 .container-menu-mobile {
+  cursor: pointer;
   display: flex;
   align-items: center;
   padding-left: 20px;
@@ -54,8 +55,8 @@
 
   .logo {
     border: none;
-    margin-bottom: 60px;
-    width: 60px;
+    margin-bottom: 20px;
+    width: 35px;
   }
 
   .logout {

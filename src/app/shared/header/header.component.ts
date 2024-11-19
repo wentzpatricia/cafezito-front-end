@@ -21,20 +21,11 @@ export class HeaderComponent {
   mdq!: MediaQueryList;
   mediaQueryListener!: () => void;
 
-  volunteerNavData: ISidebarData[] = [
-    {
-      routeLink: '/volunteering/my-volunteering',
-      labelTag: 'Meus voluntariados',
-    },
-    { routeLink: '/volunteering/events', labelTag: 'Eventos' },
+  data: ISidebarData[] = [
+    { routeLink: '', labelTag: 'cafeterias' },
+    { routeLink: '', labelTag: 'mapa' },
+    { routeLink: '', labelTag: 'promoções' },
   ];
-
-  ongNavData: ISidebarData[] = [
-    { routeLink: '/ong/events', labelTag: 'Eventos' },
-  ];
-
-  data: ISidebarData[] = [];
-  logo: string = './../../../assets/icons/logo-brown.svg';
 
   constructor(
     private changeDetectorRef: ChangeDetectorRef,

@@ -51,7 +51,7 @@ export class NavbarMobileComponent {
 
   collapsed = false;
   loadingImage!: boolean;
-  logo: string = './../../../assets/icons/logo-brown.svg';
+  logo: string = '../../../assets/icones/graos-de-cafe.svg';
   multiple: boolean = false;
   profileImage!: string;
   screenWidth = 0;
@@ -117,8 +117,11 @@ export class NavbarMobileComponent {
   }
 
   toggleCollapse(): void {
-    if (this.collapsed) this.removeBodyOverlay();
-    else this.addBodyOverlay();
+    if (this.collapsed) {
+      this.removeBodyOverlay();
+      return;
+    }
+    this.addBodyOverlay();
 
     this.collapsed = !this.collapsed;
     this.onToggleSideNav.emit({

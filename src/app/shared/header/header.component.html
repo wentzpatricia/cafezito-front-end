@@ -1,8 +1,5 @@
 @if (!mdq.matches){
 <header #header class="header">
-  <figure class="header__img">
-    <img [src]="logo" alt="Logo do sistema" />
-  </figure>
   <nav class="header__nav">
     <ul>
       @for (item of data; track $index) {
@@ -17,7 +14,7 @@
       }
       <li>
         <button class="header__nav_btn-sign-out" (click)="signOut()">
-          <i class="pi pi-sign-out"></i>
+          sair
         </button>
       </li>
     </ul>
