@@ -6,7 +6,6 @@ import { Observable } from 'rxjs';
 import { LocalStorageUtils } from '../../../../core/utils/localstorage';
 import { RequestsService } from '../../../../core/services/requests.service';
 
-import { ApiResponseModel } from '../../../../core/models/api-response.interface';
 import { User } from '../../register/_models/user.interface';
 
 @Injectable({ providedIn: 'root' })
@@ -25,7 +24,7 @@ export class LoginService {
     this.router.navigate(['/auth/login'], { queryParams: {} });
   }
 
-  postLogin(user: User): Observable<ApiResponseModel<User>> {
+  postLogin(user: User): Observable<User> {
     const url = `auth/login`;
     const body = user;
     return this.requestsService.executePost({ url, body });

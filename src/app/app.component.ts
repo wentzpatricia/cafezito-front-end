@@ -8,11 +8,12 @@ import { LoaderService } from './core/services/loader.service';
 
 import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, CoreModule, SharedModule],
+  imports: [CommonModule, RouterOutlet, CoreModule, SharedModule,  HttpClientModule,],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })

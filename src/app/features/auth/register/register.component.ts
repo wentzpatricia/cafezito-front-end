@@ -11,11 +11,7 @@ import { Validations } from '../../../core/validators/validations';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styles: [
-    `
-      @import './../auth.component.scss';
-    `,
-  ],
+  styles: [` @import './../auth.component.scss'; `],
 })
 export class RegisterComponent implements OnInit {
   errorMessage!: string | null;

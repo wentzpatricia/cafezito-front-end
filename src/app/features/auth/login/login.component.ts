@@ -5,7 +5,6 @@ import { Router } from '@angular/router';
 import { AuthGuard } from '../../../core/guards/auth.guard';
 import { LoginService } from './_services/login.service';
 
-import { ApiResponseModel } from '../../../core/models/api-response.interface';
 import { LocalStorageUtils } from '../../../core/utils/localstorage';
 
 @Component({
@@ -56,7 +55,7 @@ export class LoginComponent implements OnInit {
     this.isLoading = true;
 
     this.loginService.postLogin(this.formLogIn.value).subscribe({
-      next: (res: ApiResponseModel<any>) => {
+      next: (res) => {
         this.handleLoginSuccess(res);
       },
       error: (err) => {
