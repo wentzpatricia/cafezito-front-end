@@ -1,13 +1,8 @@
-import {
-  ChangeDetectorRef,
-  Component,
-  ElementRef,
-  HostListener,
-  ViewChild,
-} from '@angular/core';
+import { ChangeDetectorRef, Component, ElementRef, HostListener, ViewChild } from '@angular/core';
 import { ISidebarData } from '../navbar-mobile/helper';
-import { Router } from '@angular/router';
 import { MediaMatcher } from '@angular/cdk/layout';
+import { Router } from '@angular/router';
+
 import { LoginService } from '../../features/auth/login/_services/login.service';
 
 @Component({
@@ -15,6 +10,7 @@ import { LoginService } from '../../features/auth/login/_services/login.service'
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
 })
+
 export class HeaderComponent {
   @ViewChild('header', { read: ElementRef }) header!: ElementRef;
 

@@ -1,21 +1,9 @@
-import {
-  Component,
-  ElementRef,
-  EventEmitter,
-  Input,
-  Output,
-  ViewChild,
-} from '@angular/core';
-import { ISidebarData, fadeInOut } from './helper';
-import {
-  animate,
-  keyframes,
-  style,
-  transition,
-  trigger,
-} from '@angular/animations';
+import { animate, keyframes, style, transition, trigger } from '@angular/animations';
+import { Component, ElementRef, EventEmitter, Input, Output, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { LocalStorageUtils } from '../../core/utils/localstorage';
+
+import { ISidebarData, fadeInOut } from './helper';
+import { LoginService } from '../../features/auth/login/_services/login.service';
 
 interface SideNavToggle {
   screenWidth: number;
@@ -41,13 +29,12 @@ interface SideNavToggle {
     ]),
   ],
 })
+
 export class NavbarMobileComponent {
   @Input() navsideData!: ISidebarData[];
   @Output() onToggleSideNav: EventEmitter<SideNavToggle> = new EventEmitter();
   @Output() darkThemeOn: EventEmitter<boolean> = new EventEmitter<boolean>();
-  @ViewChild('sidenavs', { read: ElementRef }) elementNav:
-    | ElementRef
-    | undefined;
+  @ViewChild('sidenavs', { read: ElementRef }) elementNav: | ElementRef | undefined;
 
   collapsed = false;
   loadingImage!: boolean;
@@ -57,24 +44,18 @@ export class NavbarMobileComponent {
   screenWidth = 0;
   sub!: string;
   systemPicture: string | undefined;
-  title!: String;
 
-  constructor(public router: Router) {}
+  constructor(
+    public loginService: LoginService,
+    public router: Router
+  ) {}
 
   async ngOnInit(): Promise<void> {
     this.screenWidth = window.innerWidth;
 
     document.addEventListener('click', this.handleClickOutside.bind(this));
   }
-
-  private addBodyOverlay(): void {
-    document.body.classList.add('body-overlay');
-  }
-
-  private removeBodyOverlay(): void {
-    document.body.classList.remove('body-overlay');
-  }
-
+  
   getActiveClass(data: ISidebarData): string {
     return data.routeLink && this.router.url.includes(data.routeLink)
       ? 'active'
@@ -84,15 +65,11 @@ export class NavbarMobileComponent {
   handleClickOutside(event: MouseEvent): void {
     const menuElement = this.elementNav?.nativeElement;
 
-    if (
-      this.collapsed &&
-      menuElement &&
-      !menuElement.contains(event.target as Node)
-    ) {
+    if ( this.collapsed && menuElement && !menuElement.contains(event.target as Node)) {
       this.collapsed = !this.collapsed;
 
       this.onToggleSideNav.emit({
-        collapsed: this.collapsed,
+        collapsed: this.collapsed, 
         screenWidth: this.screenWidth,
       });
 
@@ -111,9 +88,7 @@ export class NavbarMobileComponent {
   }
 
   signOut() {
-    const localStorageUtils = new LocalStorageUtils();
-    //localStorageUtils.setItem('login', false);
-    this.router.navigate(['/auth/login']);
+    this.loginService.logout();
   }
 
   toggleCollapse(): void {
@@ -128,5 +103,13 @@ export class NavbarMobileComponent {
       collapsed: this.collapsed,
       screenWidth: this.screenWidth,
     });
+  }
+
+  private addBodyOverlay(): void {
+    document.body.classList.add('body-overlay');
+  }
+
+  private removeBodyOverlay(): void {
+    document.body.classList.remove('body-overlay');
   }
 }

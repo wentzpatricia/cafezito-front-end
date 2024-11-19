@@ -1,18 +1,13 @@
 import { ChangeDetectorRef, Component } from '@angular/core';
-import {
-  Event,
-  NavigationEnd,
-  NavigationError,
-  NavigationStart,
-  Router,
-  RouterOutlet,
-} from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { Event, NavigationEnd, NavigationError, NavigationStart, Router, RouterOutlet } from '@angular/router';
+import { MediaMatcher } from '@angular/cdk/layout';
+
+import { AuthGuard } from './core/guards/auth.guard';
+import { LoaderService } from './core/services/loader.service';
+
 import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
-import { CommonModule } from '@angular/common';
-import { MediaMatcher } from '@angular/cdk/layout';
-import { LoaderService } from './core/services/loader.service';
-import { AuthGuard } from './core/guards/auth.guard';
 
 @Component({
   selector: 'app-root',
