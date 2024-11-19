@@ -1,0 +1,28 @@
+@if (!mdq.matches){
+<header #header class="header">
+  <figure class="header__img">
+    <img [src]="logo" alt="Logo do sistema" />
+  </figure>
+  <nav class="header__nav">
+    <ul>
+      @for (item of data; track $index) {
+      <li>
+        <a
+          [routerLink]="item.routeLink"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
+          >{{ item.labelTag }}</a
+        >
+      </li>
+      }
+      <li>
+        <button class="header__nav_btn-sign-out" (click)="signOut()">
+          <i class="pi pi-sign-out"></i>
+        </button>
+      </li>
+    </ul>
+  </nav>
+</header>
+} @if (mdq.matches) {
+<app-navbar-mobile [navsideData]="data"></app-navbar-mobile>
+}

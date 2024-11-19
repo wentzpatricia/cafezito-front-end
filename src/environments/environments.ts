@@ -1,3 +1,3 @@
 export const environment = {
-    URL_API : 'http://localhost:3000'
-}
+  URL_API: 'https://cafezito-back-end.onrender.com',
+};

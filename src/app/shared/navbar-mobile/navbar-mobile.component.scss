@@ -1,0 +1,228 @@
+@import "../../core/scss/variables.scss";
+
+.container-btn {
+  margin-top: 25px;
+  button {
+    background-color: transparent;
+    border: none;
+    i {
+      color: var(--primary-200);
+    }
+  }
+}
+
+.detail-container-menu-mobile {
+  display: none !important;
+}
+.container-menu-mobile {
+  display: flex;
+  align-items: center;
+  padding-left: 20px;
+  height: 65px;
+  &__btn {
+    border: none;
+    background-color: transparent;
+    i {
+      color: var(--primary-500);
+    }
+  }
+}
+.body-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 998;
+}
+
+.container-icon-title {
+  display: flex;
+  height: 40px;
+  align-items: center;
+}
+
+.sidenav {
+  transition: all 0.5s ease;
+  background: var(--primary-500);
+  position: fixed;
+  z-index: 999;
+  top: 0;
+  width: 0;
+  height: 100vh;
+
+  .logo {
+    border: none;
+    margin-bottom: 60px;
+    width: 60px;
+  }
+
+  .logout {
+    display: flex;
+    justify-content: center;
+    margin-top: 60px;
+    button {
+      background-color: transparent;
+      border: none;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      span {
+        color: var(--primary-300);
+        margin-left: 10px;
+        &:hover {
+          color: $white;
+        }
+      }
+    }
+  }
+
+  .logo-container {
+    display: flex;
+    width: 100%;
+    padding: 25px 16px;
+    border-bottom: 1px dashed var(--primary-300);
+  }
+  .logo {
+    border: none;
+    cursor: pointer;
+    img {
+      width: 40px;
+    }
+  }
+  .logo-text {
+    margin-left: 10px;
+    h1 {
+      color: $white;
+      font-size: $font-size-large;
+      width: 140px;
+      margin: 0;
+      white-space: nowrap;
+    }
+  }
+  .close-side-nav {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100px;
+    align-items: center;
+    padding: 0 20px;
+  }
+
+  .open-side-nav {
+    display: flex;
+    width: 100%;
+    height: 100px;
+    justify-content: space-around;
+    align-items: flex-start;
+  }
+}
+
+.sidenav-collapsed {
+  width: 240px;
+}
+
+.sidenav-nav-mobile {
+  margin-top: -65px !important;
+}
+
+.sidenav-nav {
+  list-style: none;
+  padding: 0.938rem;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  cursor: pointer;
+
+  .sidenav-nav-item {
+    width: 100%;
+    margin-bottom: 5px;
+
+    .sidenav-nav-link {
+      display: flex;
+      align-items: center;
+      height: 2.5rem;
+      text-decoration: none;
+      border-radius: 7px;
+      transition: all 0.3s ease;
+      justify-content: flex-start;
+      color: var(--primary-300);
+      font-weight: $font-weight-bold;
+      .sidenav-link-icon {
+        width: 20px;
+        margin: 0 12px;
+      }
+
+      .sidenav-link-text {
+        font-size: $font-size-small;
+        margin-left: 15px;
+        white-space: nowrap;
+      }
+    }
+  }
+
+  .sidenav-nav-item:hover {
+    .sidenav-nav-link {
+      color: $white;
+    }
+  }
+}
+
+.active {
+  background-color: var(--primary-300);
+
+  .sidenav-link-icon,
+  .sidenav-link-text {
+    color: $white;
+    white-space: nowrap;
+  }
+}
+
+.active-sublevel {
+  color: $white !important;
+}
+
+.menu-collapse-icon {
+  margin: auto 0.5rem auto auto;
+  text-align: center;
+  width: 20px;
+  height: 20px;
+  color: $white;
+}
+
+.sublevel-nav {
+  list-style: none;
+
+  .sublevel-nav-item {
+    .sublevel-nav-link {
+      display: flex;
+      align-items: center;
+      height: 2.5rem;
+      color: var(--primary-400);
+      text-decoration: none;
+      border-radius: 7px;
+      transition: all 0.3s ease;
+
+      .sublevel-link-text {
+        display: flex;
+        align-items: center;
+        flex-wrap: nowrap;
+        font-size: $font-size-small;
+        align-items: flex-start;
+        white-space: nowrap;
+        &__icon {
+          width: 8px !important;
+          height: 16px !important;
+          margin-right: 5px;
+        }
+      }
+    }
+
+    .sublevel-nav-link:hover {
+      color: $white;
+    }
+  }
+}

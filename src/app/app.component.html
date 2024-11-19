@@ -1,6 +1,13 @@
 <ng-container>
   <app-progress-loader></app-progress-loader>
+  <app-header *ngIf="isUserAuthenticated()"></app-header>
 </ng-container>
-<div>
+<div
+  [ngClass]="{
+    'main-auth': isUserAuthenticated(),
+    'main-not-auth': !isUserAuthenticated(),
+    'is-mobile': mdq.matches
+  }"
+>
   <router-outlet></router-outlet>
 </div>

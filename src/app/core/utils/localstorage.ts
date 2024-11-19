@@ -1,3 +1,5 @@
+import { User } from '../models/user.model';
+
 export class LocalStorageUtils {
   private _ib_user: string = 'ib.u';
 
@@ -5,17 +7,25 @@ export class LocalStorageUtils {
     localStorage.removeItem(this._ib_user);
   }
 
-  //TODO ajustar tipagem
-  getUser(): any | null {
+  getUser(): User | null {
     const user = localStorage.getItem(this._ib_user);
 
     if (!user) return null;
 
-    return user;
+    try {
+      return JSON.parse(user) as User;
+    } catch {
+      console.error('Erro ao parsear os dados do usuário');
+      return null;
+    }
   }
 
-  //TODO ajustar tipagem
-  saveUser(user: any) {
+  saveUser(user: User): void {
     localStorage.setItem(this._ib_user, JSON.stringify(user));
+  }
+
+  getToken(): string | null {
+    const user = this.getUser();
+    return user?.access_token || null;
   }
 }

@@ -1,0 +1,52 @@
+@import "../../core/scss/variables.scss";
+
+.active {
+  border-bottom: 2px dashed var(--primary-color);
+  padding-bottom: 2px;
+}
+
+.header {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  height: 65px;
+  position: fixed;
+  width: 100%;
+  z-index: 2;
+  &__img {
+    margin: 0 0 0 20px;
+    img {
+      width: 50px;
+    }
+  }
+
+  &__nav {
+    ul {
+      align-items: center;
+      display: flex;
+      margin: 0;
+
+      li a {
+        color: var(--primary-color);
+        font-size: $font-size-small;
+        font-weight: $font-weight-bold;
+        margin: 0 7px;
+        transition: 0.5s;
+
+        &:hover {
+          color: var(--primary-400);
+          transition: 0.5s;
+        }
+      }
+    }
+
+    &_btn-sign-out {
+      background-color: transparent;
+      border: none;
+      margin: 0 10px;
+      i {
+        color: var(--primary-color);
+      }
+    }
+  }
+}
