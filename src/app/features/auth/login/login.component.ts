@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 import { AuthGuard } from '../../../core/guards/auth.guard';
 import { LoginService } from './_services/login.service';
 
-import { ApiResponseModel } from '../../../core/models/api-response.interface';
+import { LocalStorageUtils } from '../../../core/utils/localstorage';
 
 @Component({
   selector: 'app-login',
@@ -51,17 +51,17 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  doLogin() {
+  doLogin(): void {
     this.isLoading = true;
 
     this.loginService.postLogin(this.formLogIn.value).subscribe({
-      next: (res: ApiResponseModel<any>) => {
-        this.loginService.localStorageUtils.saveUser(res);
-        this.router.navigate(['/coffe-shop']);
-        this.isLoading = false;
+      next: (res) => {
+        this.handleLoginSuccess(res);
       },
       error: (err) => {
-        this.errorMessage = err.error.message;
+        this.handleLoginError(err);
+      },
+      complete: () => {
         this.isLoading = false;
       },
     });
@@ -73,5 +73,17 @@ export class LoginComponent implements OnInit {
 
   showHidePassword() {
     this.hide = !this.hide;
+  }
+
+  private handleLoginSuccess(response: any): void {
+    // TODO corrigir tipagem
+    const localStorageUtils = new LocalStorageUtils();
+    localStorageUtils.saveUser(response);
+    this.router.navigate(['/coffe-shop']);
+  }
+
+  private handleLoginError(error: any): void {
+    this.errorMessage =
+      error.error?.message || 'Erro inesperado ao realizar login.';
   }
 }

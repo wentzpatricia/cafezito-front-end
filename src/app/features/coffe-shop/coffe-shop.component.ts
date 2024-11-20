@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrl: './coffe-shop.component.scss'
 })
 export class CoffeShopComponent {
-
+  bgList = '../../../../../assets/images/bg-list.jpg';
 }

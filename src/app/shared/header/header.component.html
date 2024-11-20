@@ -1,0 +1,25 @@
+@if (!mdq.matches){
+<header #header class="header">
+  <nav class="header__nav">
+    <ul>
+      @for (item of data; track $index) {
+      <li>
+        <a
+          [routerLink]="item.routeLink"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
+          >{{ item.labelTag }}</a
+        >
+      </li>
+      }
+      <li>
+        <a class="header__nav_btn-sign-out" (click)="signOut()">
+          sair
+        </a>
+      </li>
+    </ul>
+  </nav>
+</header>
+} @if (mdq.matches) {
+<app-navbar-mobile [navsideData]="data"></app-navbar-mobile>
+}

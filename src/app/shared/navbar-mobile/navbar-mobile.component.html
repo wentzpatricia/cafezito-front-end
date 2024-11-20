@@ -1,0 +1,45 @@
+@if (collapsed) {
+<div class="body-overlay"></div>
+}
+<div #sidenavs class="sidenav" [ngClass]="collapsed ? 'sidenav-collapsed' : ''">
+  <div
+    class="container-menu-mobile"
+    [ngClass]="collapsed ? 'detail-container-menu-mobile' : ''"
+  >
+    <button class="container-menu-mobile__btn" (click)="toggleCollapse()">
+      <i class="pi pi-bars" style="font-size: 1.5rem"></i>
+    </button>
+  </div>
+  <div
+    class="scrollwrap_delayed"
+    [ngClass]="{ 'scrollwrap-open': collapsed, scrollwrap: !collapsed }"
+  >
+    <ul class="sidenav-nav" [ngClass]="!collapsed ? 'sidenav-nav-mobile' : ''">
+      @if (collapsed){
+      <img class="logo" [src]="logo" alt="Logo do sistema" />
+      } @for (data of navsideData; track data) {
+
+      <li class="sidenav-nav-item">
+        <a
+          class="sidenav-nav-link"
+          [routerLink]="[data.routeLink]"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
+          (click)="shrinkItems(data)"
+        >
+          @if (collapsed) {
+          <span class="sidenav-link-text" @fadeInOut>
+            {{ data.labelTag }}
+          </span>
+          }
+        </a>
+      </li>
+      } @if (collapsed){
+      <div class="container-btn">
+        <button (click)="signOut()"><i class="pi pi-sign-out"></i></button>
+      </div>
+
+      }
+    </ul>
+  </div>
+</div>
