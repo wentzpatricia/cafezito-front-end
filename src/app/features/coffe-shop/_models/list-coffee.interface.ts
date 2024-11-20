@@ -13,18 +13,17 @@ export interface CoffeeShop {
     address: string;
     urlImage: string;
     averageRating: number;
-    product: ProductTag[]; 
+    product: ProductTagEnum[]; 
     rating: Rating[];
 }
   
-
-enum ProductTag {
-    VEGANO,
-    VEGETARIANO,
-    PETFRIENDLY,
-    COWORKING,
-    WIFI,
-    SEM_GLUTEN,
-    MENOR_PRECO,
-    MAIOR_PRECO,
+export enum ProductTagEnum {
+    VEGANO = "vegano",
+    VEGETARIANO = "vegetariano",
+    PETFRIENDLY = "petfriendly",
+    COWORKING = "coworking",
+    WIFI = "wifi",
+    SEM_GLUTEN = "sem-gluten",
+    MENOR_PRECO = "menor-preco",
+    MAIOR_PRECO = "maior-preco",
 }
