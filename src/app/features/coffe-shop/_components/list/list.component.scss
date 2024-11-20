@@ -7,6 +7,9 @@
   display: flex;
   justify-content: space-evenly;
   flex-wrap: wrap;
+  position: relative;
+  min-height: 500px;
+  overflow: hidden;
 
   &__card {
     background: var(--primary-600);
@@ -16,6 +19,13 @@
     margin: 100px 10px 0 10px;
     padding: 0 20px;
     width: 250px;
+
+    p-button {
+      margin: 0 50px;
+      position: relative;
+      top: -80px;
+      
+    }
 
     &_address {
       align-items: center;

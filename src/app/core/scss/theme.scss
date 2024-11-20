@@ -11,7 +11,7 @@
   --surface-e: #ffffff;
   --surface-f: #ffffff;
   --text-color: #4b5563;
-  --text-color-secondary: #6b7280;
+  --text-color-secondary: #6b7d42;
   --primary-color: #261308;
   --primary-color-text: #ffffff;
   --surface-0: #ffffff;
@@ -304,7 +304,7 @@
   }
 
   .p-text-secondary {
-    color: #6b7280;
+    color: #6b7d42;
   }
 
   .pi {
@@ -2164,51 +2164,55 @@
 
   .p-button.p-button-secondary, .p-button-group.p-button-secondary > .p-button, .p-splitbutton.p-button-secondary > .p-button {
     color: #ffffff;
-    background: #64748b;
-    border: 1px solid #64748b;
+    background: #a8bba8;
+    border: 1px solid #a8bba8;
+
   }
   .p-button.p-button-secondary:not(:disabled):hover, .p-button-group.p-button-secondary > .p-button:not(:disabled):hover, .p-splitbutton.p-button-secondary > .p-button:not(:disabled):hover {
-    background: #475569;
+    background: #a8bba8;
     color: #ffffff;
-    border-color: #475569;
+    border-color: #a8bba8;
+    
   }
   .p-button.p-button-secondary:not(:disabled):focus, .p-button-group.p-button-secondary > .p-button:not(:disabled):focus, .p-splitbutton.p-button-secondary > .p-button:not(:disabled):focus {
-    box-shadow: 0 0 0 0.2rem #e2e8f0;
+    box-shadow: 0 0 0 0.2rem #a8bba8;
+
   }
   .p-button.p-button-secondary:not(:disabled):active, .p-button-group.p-button-secondary > .p-button:not(:disabled):active, .p-splitbutton.p-button-secondary > .p-button:not(:disabled):active {
-    background: #334155;
+    background: #a8bba8;
     color: #ffffff;
-    border-color: #334155;
+    border-color: #a8bba8;
+    
   }
   .p-button.p-button-secondary.p-button-outlined, .p-button-group.p-button-secondary > .p-button.p-button-outlined, .p-splitbutton.p-button-secondary > .p-button.p-button-outlined {
     background-color: transparent;
-    color: #64748b;
+    color: #a8bba8;
     border: 1px solid;
   }
   .p-button.p-button-secondary.p-button-outlined:not(:disabled):hover, .p-button-group.p-button-secondary > .p-button.p-button-outlined:not(:disabled):hover, .p-splitbutton.p-button-secondary > .p-button.p-button-outlined:not(:disabled):hover {
     background: rgba(100, 116, 139, 0.04);
-    color: #64748b;
+    color: #a8bba8;
     border: 1px solid;
   }
   .p-button.p-button-secondary.p-button-outlined:not(:disabled):active, .p-button-group.p-button-secondary > .p-button.p-button-outlined:not(:disabled):active, .p-splitbutton.p-button-secondary > .p-button.p-button-outlined:not(:disabled):active {
     background: rgba(100, 116, 139, 0.16);
-    color: #64748b;
+    color: #a8bba8;
     border: 1px solid;
   }
   .p-button.p-button-secondary.p-button-text, .p-button-group.p-button-secondary > .p-button.p-button-text, .p-splitbutton.p-button-secondary > .p-button.p-button-text {
     background-color: transparent;
-    color: #64748b;
+    color: #a8bba8;
     border-color: transparent;
   }
   .p-button.p-button-secondary.p-button-text:not(:disabled):hover, .p-button-group.p-button-secondary > .p-button.p-button-text:not(:disabled):hover, .p-splitbutton.p-button-secondary > .p-button.p-button-text:not(:disabled):hover {
     background: rgba(100, 116, 139, 0.04);
     border-color: transparent;
-    color: #64748b;
+    color: #a8bba8;
   }
   .p-button.p-button-secondary.p-button-text:not(:disabled):active, .p-button-group.p-button-secondary > .p-button.p-button-text:not(:disabled):active, .p-splitbutton.p-button-secondary > .p-button.p-button-text:not(:disabled):active {
     background: rgba(100, 116, 139, 0.16);
     border-color: transparent;
-    color: #64748b;
+    color: #a8bba8;
   }
 
   .p-button.p-button-info, .p-button-group.p-button-info > .p-button, .p-splitbutton.p-button-info > .p-button {
@@ -5975,7 +5979,7 @@
     line-height: 1.5rem;
   }
   .p-badge.p-badge-secondary {
-    background-color: #64748b;
+    background-color: #a8bba8;
     color: #ffffff;
   }
   .p-badge.p-badge-success {
@@ -6280,7 +6284,7 @@
     box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px var(--focus-button), 0 1px 2px 0 black;
   }
   .p-button.p-button-secondary:enabled:focus {
-    box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px #b0b9c6, 0 1px 2px 0 black;
+    box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px #a8bba8, 0 1px 2px 0 black;
   }
   .p-button.p-button-success:enabled:focus {
     box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px #88eaac, 0 1px 2px 0 black;

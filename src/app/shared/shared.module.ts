@@ -4,6 +4,7 @@ import { RouterModule } from '@angular/router';
 
 import { BackButtonComponent } from './back-button/back-button.component';
 import { HeaderComponent } from './header/header.component';
+import { LoadingComponent } from './loading/loading.component';
 import { NavbarMobileComponent } from './navbar-mobile/navbar-mobile.component';
 import { ProgressLoaderComponent } from './progress-loader/progress-loader.component';
 
@@ -11,6 +12,7 @@ import { ProgressLoaderComponent } from './progress-loader/progress-loader.compo
   declarations: [
     BackButtonComponent,
     HeaderComponent,
+    LoadingComponent,
     NavbarMobileComponent,
     ProgressLoaderComponent,
   ],
@@ -18,6 +20,7 @@ import { ProgressLoaderComponent } from './progress-loader/progress-loader.compo
   exports: [
     BackButtonComponent,
     HeaderComponent,
+    LoadingComponent,
     NavbarMobileComponent,
     ProgressLoaderComponent,
   ],

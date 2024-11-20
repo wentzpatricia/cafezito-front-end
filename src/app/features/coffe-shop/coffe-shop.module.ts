@@ -7,6 +7,9 @@ import { FilterComponent } from './_components/filter/filter.component';
 import { ListComponent } from './_components/list/list.component';
 import { DetailComponent } from './_components/detail/detail.component';
 
+import { ButtonModule } from 'primeng/button';
+import { SharedModule } from '../../shared/shared.module';
+
 @NgModule({
   declarations: [
     CoffeShopComponent,
@@ -14,6 +17,6 @@ import { DetailComponent } from './_components/detail/detail.component';
     FilterComponent,
     ListComponent,
   ],
-  imports: [CommonModule, CoffeShopRoutingModule],
+  imports: [ButtonModule, CommonModule, CoffeShopRoutingModule, SharedModule],
 })
 export class CoffeShopModule {}

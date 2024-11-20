@@ -1,16 +1,22 @@
-<section class="coffee-shops">
-    @for (item of listCoffeeShop; track item) {
-        <div class="coffee-shops__card">
-            <img class="coffee-shops__card_img" [src]="item.urlImage" [alt]="item.name">
-            <p class="coffee-shops__card_rating"> <i class="pi pi-star-fill"></i>{{item.averageRating | number:'1.0-2'}}</p>
-            <h2 class="coffee-shops__card_name">{{item.name}}</h2>
-            <div class="coffee-shops__card_product">
-                @for(product of item.product; track product){
-                    <span [ngClass]="getClassFromEnum(product)">{{product.toLowerCase()}}</span>
-                }
+<section class="coffee-shops" [ngClass]="{ 'loading': loading }">
+    @if(loading){
+        <app-loading></app-loading>
+    } @else {
+        @for (item of listCoffeeShop; track item) {
+            <div class="coffee-shops__card">
+                <img class="coffee-shops__card_img" [src]="item.urlImage" [alt]="item.name">
+                <p class="coffee-shops__card_rating"> <i class="pi pi-star-fill"></i>{{item.averageRating | number:'1.0-2'}}</p>
+                <h2 class="coffee-shops__card_name">{{item.name}}</h2>
+                <div class="coffee-shops__card_product">
+                    @for(product of item.product; track product){
+                        <span [ngClass]="getClassFromEnum(product)">{{product.toLowerCase()}}</span>
+                    }
+                </div>
+                <p class="coffee-shops__card_address"><i class="pi pi-map-marker"></i>{{item.address}}</p>
+                <p-button size="small" severity="secondary" label="Ver mais" [text]="true"
+                [routerLink]="['/coffe-shop', item.id]"></p-button>
             </div>
-            <p class="coffee-shops__card_address"><i class="pi pi-map-marker"></i>{{item.address}}</p>
-        </div>
+        }
     }
 </section>
 
