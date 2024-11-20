@@ -8,15 +8,19 @@ import {
   HttpErrorResponse,
 } from '@angular/common/http';
 
-import { Observable } from 'rxjs';
-import { tap, finalize } from 'rxjs/operators';
+import { Observable, throwError } from 'rxjs';
+import { catchError, tap, finalize } from 'rxjs/operators';
 
 import { LoaderService } from '../services/loader.service';
 import { LocalStorageUtils } from '../utils/localstorage';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class HttpInterceptorService implements HttpInterceptor {
-  constructor(private loaderService: LoaderService) {}
+  constructor(
+    private loaderService: LoaderService,
+    private router: Router
+  ) {}
 
   intercept(
     req: HttpRequest<any>,
@@ -35,7 +39,12 @@ export class HttpInterceptorService implements HttpInterceptor {
           if (event instanceof HttpResponse) {
           }
         },
-        error: (error: HttpErrorResponse) => {},
+      }),
+      catchError((error: HttpErrorResponse) => {
+        if (error.status === 401) {
+          this.handleUnauthorized();
+        }
+        return throwError(() => error);
       }),
       finalize(() => {
         this.loaderService.hide();
@@ -50,5 +59,11 @@ export class HttpInterceptorService implements HttpInterceptor {
         'Content-Type': 'application/json;charset=utf-8',
       },
     });
+  }
+
+  private handleUnauthorized(): void {
+    const localStorageUtils = new LocalStorageUtils();
+    localStorageUtils.clearLoggedData();
+    this.router.navigate(['/auth']);
   }
 }
