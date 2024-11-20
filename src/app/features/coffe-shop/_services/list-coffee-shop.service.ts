@@ -13,4 +13,9 @@ export class ListCoffeeShopService {
         const url = `coffee-shop`;
         return this.requestsService.executeGet({ url });
     }
+
+    getCoffeeShopById(id:string): Observable<any>{ //TODO fazer tipagem
+        const url = `coffee-shop/${id}`;
+        return this.requestsService.executeGet({ url });
+    }
 }
