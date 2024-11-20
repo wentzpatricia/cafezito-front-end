@@ -1,6 +1,8 @@
 <ng-container>
   <app-progress-loader></app-progress-loader>
-  <app-header *ngIf="isUserAuthenticated()"></app-header>
+  @if(isUserAuthenticated()){
+    <app-header></app-header>
+  }
 </ng-container>
 <div
   [ngClass]="{

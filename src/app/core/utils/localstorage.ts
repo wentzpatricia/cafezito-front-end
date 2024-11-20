@@ -1,14 +1,14 @@
 import { User } from '../models/user.model';
 
 export class LocalStorageUtils {
-  private _ib_user: string = 'ib.u';
+  private _cs_user: string = 'cs.u';
 
   clearLoggedData() {
-    localStorage.removeItem(this._ib_user);
+    localStorage.removeItem(this._cs_user);
   }
 
   getUser(): User | null {
-    const user = localStorage.getItem(this._ib_user);
+    const user = localStorage.getItem(this._cs_user);
 
     if (!user) return null;
 
@@ -21,7 +21,7 @@ export class LocalStorageUtils {
   }
 
   saveUser(user: User): void {
-    localStorage.setItem(this._ib_user, JSON.stringify(user));
+    localStorage.setItem(this._cs_user, JSON.stringify(user));
   }
 
   getToken(): string | null {
