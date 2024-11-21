@@ -5,7 +5,7 @@
 
 .container-detail {
     background-color: var(--primary-100);
-    height: 100%;
+    min-height: 100vh;
     position: absolute;
     padding-bottom: 40px;
     top:0;
@@ -35,16 +35,53 @@
     display: flex;
     flex-direction: column;
 
-    &__img {
+    &__coffe-types {
         display: flex;
         flex-wrap: wrap;
-        margin: 0 100px;
-        img { 
+        margin: 0 130px 0 100px;
+        padding-bottom: 25px;
+
+        &_card {
+            align-items: center;
+            background-color: $primary-dark-color-transparent;
             border-radius: 15px;
+            display: flex;
+            flex-direction: column;
             height: 300px;
             margin: 15px;
-            object-fit: cover;
             width: 300px;
+
+            img { margin-top: 25px; }
+
+            span { 
+                font-size: $font-size-medium;
+                font-weight: $font-weight-extra-bold;
+                margin-top: 25px;
+             }
+    
+        }
+
+        
+        @include tablet {
+            justify-content: center;
+            margin: 0 30px;
+        }
+    }
+
+    &__img {
+        border-bottom: 2px dashed var(--primary-600);
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        margin: 0 130px 0 100px;
+        padding-bottom: 25px;
+
+        img { 
+            border-radius: 30px;
+            height: 500px;
+            margin: 15px;
+            object-fit: cover;
+            width: 500px;
         }
 
         @include tablet {
@@ -79,7 +116,7 @@
             flex-direction: column;
         }
 
-        h2 { font-size: $font-size-extra-large; font-weight: $font-weight-bold; }
+        h2 { font-size: $font-size-2xl; font-weight: $font-weight-bold; }
 
         h3 {
             font-size: $font-size-medium;
@@ -94,7 +131,7 @@
     }
 
     &__title {
-        font-size: $font-size-medium;
+        font-size: $font-size-extra-large;
         font-weight: $font-weight-extra-bold;
         margin-left: 100px;
 

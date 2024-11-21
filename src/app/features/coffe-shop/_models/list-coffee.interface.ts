@@ -28,6 +28,12 @@ export enum ProductTagEnum {
     MAIOR_PRECO = "maior-preco",
 }
 
+export enum CoffeTypesEnum {
+    TRADICIONAIS = "Cafés tradicionais",
+    ESPECIAIS = "Cafés especiais",
+    CHAS = "Chás"
+}
+
 export interface CoffeeShopDetail extends CoffeeShop {
     environment: Environment; 
     voucherPromotional: VoucherPromotional[];
@@ -37,7 +43,7 @@ export interface Environment {
     id: string;
     description: string;
     openingHours: string; 
-    coffeeTypes: string[]; 
+    coffeTypes: string[]; 
     urlImages: string[];
     socialMedias: SocialMedias [];
 }

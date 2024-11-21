@@ -50,6 +50,20 @@
                     }
                 </figure>
             }
+
+            @if(coffeShopDetail.environment && coffeShopDetail.environment.coffeTypes && coffeShopDetail.environment.coffeTypes.length > 0){
+                <h3 class="container-environment__title">Tipos de café</h3>
+                <div class="container-environment__coffe-types">
+                    @for(types of coffeShopDetail.environment.coffeTypes; track types){
+                        <div class="container-environment__coffe-types_card">
+                            <img [src]="'../../../../../assets/images/' + types + '.svg'"  [alt]="getEnumFromCoffeTypes(types)">
+                            <span>{{getEnumFromCoffeTypes(types)}}</span>   
+                        </div>
+                        
+                    }
+                    
+                </div>
+            }
         </div>
     }
 </section>
