@@ -65,9 +65,9 @@
                 </div>
             }
         </div>
-    }
-    @if(coffeShopDetail.rating){
-        <app-list-rating [rating]="coffeShopDetail.rating"></app-list-rating>
-    }
 
+         @if(coffeShopDetail && coffeShopDetail.rating){
+            <app-list-rating [rating]="coffeShopDetail.rating" [average]="coffeShopDetail.averageRating"></app-list-rating>
+        }
+    }
 </section>
