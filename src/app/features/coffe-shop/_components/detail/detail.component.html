@@ -1,11 +1,55 @@
+<section class="container-detail">
+    <img class="container-detail__border" src="../../../../../assets/images/detail.svg" />
 
-<p>detail works!</p>
-<p>detail works!</p>
-<p>detail works!</p>
-<p>detail works!</p>
-<p>detail works!</p>
-<p>detail works!</p>
-<p>detail works!</p>
-<p>{{coffeeShopId}}</p>
+    <div class="container-detail__back-button">
+        <app-back-button></app-back-button>
+    </div>
 
-<app-back-button></app-back-button>
+
+    @if(coffeShopDetail){
+        <div class="container-environment">
+            <aside class="container-environment__infos">
+                <div>
+                    <h2>{{ coffeShopDetail.name }}</h2>
+                    @if(coffeShopDetail.environment && coffeShopDetail.environment.description){
+                        <p>{{ coffeShopDetail.environment.description}}</p>
+                    }
+                </div>
+
+                <div>
+                    <div class="container-environment__infos_product">
+                        @for(product of coffeShopDetail.product; track product){
+                            <span [ngClass]="getClassFromEnum(product)">{{product.toLowerCase()}}</span>
+                        }
+                    </div>
+                    @if(coffeShopDetail.environment && coffeShopDetail.environment.openingHours){
+                        <h3><span>Funcionamento</span>{{ coffeShopDetail.environment.openingHours }}</h3>
+                    }
+                    @if(coffeShopDetail.address){
+                        <h3><span>Endereço</span>{{ coffeShopDetail.address}}</h3>
+                    }
+                    <div>
+                        <p-button  size="small" label="Ver no mapa"></p-button>
+                        
+                        @if(coffeShopDetail.environment && coffeShopDetail.environment.socialMedias.length > 0){
+                            <span>Redes Sociais</span>
+                            @for(item of coffeShopDetail.environment.socialMedias; track item){
+                                <a [routerLink]="item.url">{{item.name}}</a>
+                            }
+                        }
+                    </div>
+                    
+                </div>
+            </aside>
+
+            @if(coffeShopDetail.environment && coffeShopDetail.environment.urlImages){
+                <h3 class="container-environment__title">Conheça o ambiente</h3>
+                <figure class="container-environment__img">
+                    @for(item of coffeShopDetail.environment.urlImages; track item){
+                        <img [src]="item" alt="Imagem do ambiente da cafeteria"/>
+                    }
+                </figure>
+            }
+        </div>
+    }
+</section>

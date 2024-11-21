@@ -27,3 +27,35 @@ export enum ProductTagEnum {
     MENOR_PRECO = "menor-preco",
     MAIOR_PRECO = "maior-preco",
 }
+
+export interface CoffeeShopDetail extends CoffeeShop {
+    environment: Environment; 
+    voucherPromotional: VoucherPromotional[];
+}
+
+export interface Environment {
+    id: string;
+    description: string;
+    openingHours: string; 
+    coffeeTypes: string[]; 
+    urlImages: string[];
+    socialMedias: SocialMedias [];
+}
+export interface SocialMedias {
+    id: string;
+    name: string;
+    url: string;
+}
+
+export interface VoucherPromotional {
+    id: string;
+    voucher: string; 
+    redeemed: boolean; 
+    availableQuantity: number; 
+    validFrom: string; 
+    validUntil: string;
+    redeemedAt: string | null; 
+    redemptionCode: string;
+    coffeeShopId: string; 
+    userId: string | null; 
+}
