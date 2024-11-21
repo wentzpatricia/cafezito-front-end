@@ -3,7 +3,8 @@ import { ActivatedRoute } from '@angular/router';
 
 import { ListCoffeeShopService } from '../../_services/list-coffee-shop.service';
 
-import { CoffeTypesEnum, CoffeeShopDetail, ProductTagEnum } from '../../_models/list-coffee.interface';
+import { CoffeeShopDetail} from '../../_models/list-coffee.interface';
+import { CoffeTypesEnum, ProductTagEnum } from '../../_models/coffee-shop.enum';
 
 @Component({ selector: 'app-detail', templateUrl: './detail.component.html', styleUrl: './detail.component.scss' })
 export class DetailComponent implements OnInit {
