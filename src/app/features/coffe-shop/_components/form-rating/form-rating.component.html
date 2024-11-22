@@ -1,0 +1,32 @@
+<form [formGroup]="form" class="form">
+    <div class="container-input">
+        <span class="container-input__stars">
+            <label for="stars">Nota</label>
+            <p-rating formControlName="stars" [cancel]="false" [ngClass]="{'ng-invalid ng-dirty': form.get('stars')?.touched && form.get('stars')?.invalid }"/>
+        </span>
+        @if (form.get('stars')?.touched && form.get('stars')?.invalid) {
+            <div class="invalid-feedback">
+              @if (form.get('stars')?.errors?.['required']) {
+              <span>Nota é um campo obrigatório.</span>
+              }
+            </div>
+        }
+    </div>
+    <div class="container-input">
+        <label for="float-input">Comentário</label>
+        <textarea [ngClass]="{'ng-invalid ng-dirty': form.get('feedback')?.touched && form.get('feedback')?.invalid }"
+            id="float-input" rows="5" cols="30"  pInputTextarea formControlName="feedback">
+        </textarea>
+            
+        @if (form.get('feedback')?.touched && form.get('feedback')?.invalid) {
+            <div class="invalid-feedback">
+              @if (form.get('feedback')?.errors?.['required']) {
+              <span>Comentário é um campo obrigatório.</span>
+              }
+            </div>
+        }
+    </div>
+
+    <p-button label="Avaliar" [loading]="loading" [disabled]="!form.valid || loading" (click)="submitForm()"></p-button>
+    
+</form>

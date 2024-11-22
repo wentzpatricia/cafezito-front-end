@@ -1,12 +1,6 @@
-export interface Rating {
-    id: string;
-    stars: number;
-    feedback: string;
-    date: string;
-    userId: string;
-    coffeeShopId: string;
-}
-  
+import { ProductTagEnum } from "./coffee-shop.enum";
+import { Rating } from "./rating.interface";
+
 export interface CoffeeShop {
     id: string;
     name: string;
@@ -17,13 +11,34 @@ export interface CoffeeShop {
     rating: Rating[];
 }
   
-export enum ProductTagEnum {
-    VEGANO = "vegano",
-    VEGETARIANO = "vegetariano",
-    PETFRIENDLY = "petfriendly",
-    COWORKING = "coworking",
-    WIFI = "wifi",
-    SEM_GLUTEN = "sem-gluten",
-    MENOR_PRECO = "menor-preco",
-    MAIOR_PRECO = "maior-preco",
+export interface CoffeeShopDetail extends CoffeeShop {
+    environment: Environment; 
+    voucherPromotional: VoucherPromotional[];
+}
+
+export interface Environment {
+    id: string;
+    description: string;
+    openingHours: string; 
+    coffeTypes: string[]; 
+    urlImages: string[];
+    socialMedias: SocialMedias [];
+}
+export interface SocialMedias {
+    id: string;
+    name: string;
+    url: string;
+}
+
+export interface VoucherPromotional {
+    id: string;
+    voucher: string; 
+    redeemed: boolean; 
+    availableQuantity: number; 
+    validFrom: string; 
+    validUntil: string;
+    redeemedAt: string | null; 
+    redemptionCode: string;
+    coffeeShopId: string; 
+    userId: string | null; 
 }

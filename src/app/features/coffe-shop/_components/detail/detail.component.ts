@@ -3,10 +3,16 @@ import { ActivatedRoute } from '@angular/router';
 
 import { ListCoffeeShopService } from '../../_services/list-coffee-shop.service';
 
+import { CoffeeShopDetail} from '../../_models/list-coffee.interface';
+import { CoffeTypesEnum, ProductTagEnum } from '../../_models/coffee-shop.enum';
+
 @Component({ selector: 'app-detail', templateUrl: './detail.component.html', styleUrl: './detail.component.scss' })
 export class DetailComponent implements OnInit {
   
+  coffeShopDetail!: CoffeeShopDetail;
   coffeeShopId: string | null = null;
+  CoffeTypesEnum = CoffeTypesEnum;
+  ProductTag = ProductTagEnum;
 
   constructor (
     private listCoffeeShopService : ListCoffeeShopService,
@@ -19,10 +25,14 @@ export class DetailComponent implements OnInit {
     this.coffeeShopId ? this.getCoffeeShopById(this.coffeeShopId) : '';
   }
 
+  getClassFromEnum(product: string): string {
+    return this.ProductTag[product as keyof typeof ProductTagEnum] || '';
+  }
+
   getCoffeeShopById(id:string) {
     this.listCoffeeShopService.getCoffeeShopById(id).subscribe({
       next: (res) => {
-        console.log(res)
+        this.coffeShopDetail = res;
       },
       error: (err) => {
         console.error(err)
@@ -30,4 +40,8 @@ export class DetailComponent implements OnInit {
     })
   }
 
+  getEnumFromCoffeTypes(coffeType: string): string {
+    return this.CoffeTypesEnum[coffeType as keyof typeof CoffeTypesEnum] || '';
+  }
+  
 }

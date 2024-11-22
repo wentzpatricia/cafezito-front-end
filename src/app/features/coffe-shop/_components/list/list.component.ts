@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ListCoffeeShopService } from '../../_services/list-coffee-shop.service';
 
-import { CoffeeShop, ProductTagEnum } from '../../_models/list-coffee.interface';
+import { CoffeeShop } from '../../_models/list-coffee.interface';
+import { ProductTagEnum } from '../../_models/coffee-shop.enum';
 
 @Component({ selector: 'app-list', templateUrl: './list.component.html', styleUrl: './list.component.scss' })
 export class ListComponent implements OnInit {

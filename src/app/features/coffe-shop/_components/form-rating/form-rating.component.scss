@@ -1,0 +1,41 @@
+@import "../../../../core/scss/mixins.scss";
+@import "../../../../core/scss/variables.scss";
+
+.form {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    margin-top: 30px;
+    width: 400px;
+  
+    .container-input {
+        margin-bottom: 25px;
+        width: 100%;
+
+        label { 
+            color: var(--primary-600);
+            font-size: $font-size-large;
+            font-weight: $font-weight-bold;
+            margin-bottom: 10px;
+        }
+        
+        textarea { width: 100%;}
+        
+        &__stars {
+            display: flex;
+            flex-direction: column;
+        }
+    }
+
+    .invalid-feedback {
+        color: $error-color;
+        font-size: $font-size-small;
+        font-weight: $font-weight-bold;
+    }
+
+    p-button {
+        margin-top: 55px;
+    }
+}
+
+

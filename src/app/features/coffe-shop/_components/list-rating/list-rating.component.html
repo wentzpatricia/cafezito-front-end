@@ -1,0 +1,40 @@
+<section class="container-list-rating">
+    <header class="container-list-rating__header">
+        <div class="container-list-rating__header_average">
+            <h2>Avaliações</h2>
+            <p>
+                <span><i class="pi pi-star-fill"></i>{{average | number:'1.0-2' }}</span>
+                {{rating.length}} avaliações
+            </p>
+        </div>
+        <p-button size="small" label="Avaliar cafeteria" (onClick)="showDialog()"></p-button>
+    </header>
+
+    @for(item of rating;track item){
+        <div class="container-list-rating__rating" >
+            <figure>
+                <img src="../../../../../assets/images/xicara-de-cafe.png" alt="Imagem de uma xícara de café com um desenho de coração"/>
+            </figure>
+            <div class="container-list-rating__info">
+                <div class="container-list-rating__stars">
+                    <span *ngFor="let _ of createRange(item.stars)">
+                        <i class="pi pi-star-fill"></i>
+                    </span>
+        
+                    <span *ngFor="let _ of createRange(5 - item.stars)">
+                        <i class="pi pi-star"></i>
+                    </span>
+
+                    {{item.date | date:'dd/MM/yyyy' }}
+                </div>
+                <p>{{item.feedback}}</p>
+            </div>
+            
+        </div>
+    }
+    <p-dialog [(visible)]="isDialogVisible" [modal]="true" [header]="'Avaliar Cafeteria'" [closable]="true" [resizable]="false">
+        <app-form-rating (onSubmit)="handleFormSubmit($event)"></app-form-rating>
+        
+    </p-dialog>
+    <p-toast />
+</section>
