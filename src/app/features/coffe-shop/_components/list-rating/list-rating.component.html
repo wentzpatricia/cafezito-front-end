@@ -3,11 +3,11 @@
         <div class="container-list-rating__header_average">
             <h2>Avaliações</h2>
             <p>
-                <span><i class="pi pi-star-fill"></i>{{average}}</span>
+                <span><i class="pi pi-star-fill"></i>{{average | number:'1.0-2' }}</span>
                 {{rating.length}} avaliações
             </p>
         </div>
-        <p-button size="small" label="Avaliar cafeteria"></p-button>
+        <p-button size="small" label="Avaliar cafeteria" (onClick)="showDialog()"></p-button>
     </header>
 
     @for(item of rating;track item){
@@ -32,4 +32,9 @@
             
         </div>
     }
+    <p-dialog [(visible)]="isDialogVisible" [modal]="true" [header]="'Avaliar Cafeteria'" [closable]="true" [resizable]="false">
+        <app-form-rating (onSubmit)="handleFormSubmit($event)"></app-form-rating>
+        
+    </p-dialog>
+    <p-toast />
 </section>
