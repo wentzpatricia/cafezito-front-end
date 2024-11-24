@@ -19,7 +19,7 @@
                 <div>
                     <div class="container-environment__infos_product">
                         @for(product of coffeShopDetail.product; track product){
-                            <span [ngClass]="getClassFromEnum(product)">{{product.toLowerCase()}}</span>
+                            <span [ngClass]="getClassFromEnum(product)">{{getEnum(product)}}</span>
                         }
                     </div>
                     @if(coffeShopDetail.environment && coffeShopDetail.environment.openingHours){
