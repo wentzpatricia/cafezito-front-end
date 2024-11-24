@@ -25,8 +25,21 @@ export class DetailComponent implements OnInit {
     this.coffeeShopId ? this.getCoffeeShopById(this.coffeeShopId) : '';
   }
 
-  getClassFromEnum(product: string): string {
+  getEnum(product: string): string {
     return this.ProductTag[product as keyof typeof ProductTagEnum] || '';
+  }
+
+  getClassFromEnum(product: string): string {
+    console.log(product)
+    const value = this.ProductTag[product as keyof typeof ProductTagEnum];
+    if (!value) return '';
+  
+    return value
+      .toLowerCase() 
+      .normalize('NFD') 
+      .replace(/[\u0300-\u036f]/g, '')
+      .replace(/\s+/g, '-') 
+      .replace(/[^a-z0-9\-]/g, '');
   }
 
   getCoffeeShopById(id:string) {

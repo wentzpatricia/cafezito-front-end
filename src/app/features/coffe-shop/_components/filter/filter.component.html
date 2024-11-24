@@ -1,1 +1,9 @@
-<p>filter works!</p>
+<form class="form-filter" [formGroup]="form">   
+  @for(tag of productTags; track tag;){
+    <p-toggleButton
+    [formControlName]="tag[0]"
+    [onLabel]="tag[1]"
+    [offLabel]="tag[1]">
+  </p-toggleButton> 
+  }
+</form>

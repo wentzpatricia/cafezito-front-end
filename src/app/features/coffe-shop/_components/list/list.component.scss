@@ -2,6 +2,11 @@
 @import "../../../../core/scss/variables.scss";
 @import "../../../../core/scss/product-tags.scss";
 
+.container-coffe-shops {
+  display: flex;
+  flex-direction: column;
+}
+
 .coffee-shops {
   padding: 0 40px;
   display: flex;

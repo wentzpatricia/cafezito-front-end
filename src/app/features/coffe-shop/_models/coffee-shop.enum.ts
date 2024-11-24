@@ -1,12 +1,12 @@
 export enum ProductTagEnum {
-    VEGANO = "vegano",
-    VEGETARIANO = "vegetariano",
-    PETFRIENDLY = "petfriendly",
-    COWORKING = "coworking",
-    WIFI = "wifi",
-    SEM_GLUTEN = "sem-gluten",
-    MENOR_PRECO = "menor-preco",
-    MAIOR_PRECO = "maior-preco",
+    VEGANO = "Vegano",
+    VEGETARIANO = "Vegetariano",
+    PETFRIENDLY = "Pet Friendly",
+    COWORKING = "Coworking",
+    WIFI = "Wi-fi",
+    SEM_GLUTEN = "Sem glúten",
+    MENOR_PRECO = "Menor preço",
+    MAIOR_PRECO = "Maior preço",
 }
 
 export enum CoffeTypesEnum {

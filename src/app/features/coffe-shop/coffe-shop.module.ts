@@ -18,6 +18,7 @@ import { FloatLabelModule } from 'primeng/floatlabel';
 import { RatingModule } from 'primeng/rating';
 import { SharedModule } from '../../shared/shared.module';
 import { ToastModule } from 'primeng/toast';
+import { ToggleButtonModule } from 'primeng/togglebutton';
 
 import { MessageService } from 'primeng/api';
 
@@ -41,7 +42,8 @@ import { MessageService } from 'primeng/api';
     FormsModule,
     RatingModule,
     SharedModule,
-    ToastModule
+    ToastModule,
+    ToggleButtonModule
   ],
   providers:[MessageService]
 })
