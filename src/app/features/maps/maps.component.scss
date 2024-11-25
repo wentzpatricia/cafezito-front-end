@@ -1,0 +1,11 @@
+@import "../../core/scss/mixins.scss";
+@import "../../core/scss/variables.scss";
+
+.container-map {
+    background-color: var(--primary-900);
+    min-height: 100vh;
+    position: absolute;
+    padding-bottom: 40px;
+    top:0;
+    width: 100%;
+}
