@@ -34,7 +34,6 @@ export class FormRatingComponent implements OnInit{
 
   submitForm() {
     this.loading = true;
-    console.log(this.form.value)
 
     if (this.coffeeShopId)
     this.ratingService.postCoffeeShopRating(this.form.value, this.coffeeShopId).subscribe({

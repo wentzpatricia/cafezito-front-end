@@ -30,7 +30,6 @@ export class DetailComponent implements OnInit {
   }
 
   getClassFromEnum(product: string): string {
-    console.log(product)
     const value = this.ProductTag[product as keyof typeof ProductTagEnum];
     if (!value) return '';
   
