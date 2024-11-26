@@ -1,8 +1,28 @@
 <section class="container-map">
-    <app-filter (filtersChanged)="onFiltersChanged($event)"></app-filter>
+    <header>
+        <app-filter (filtersChanged)="onFiltersChanged($event)"></app-filter>
+    </header>
 
-    <div>
-        <h1>Google Maps in Angular 17</h1>
-        <google-map height="600px" width="800px" [options]="options"> </google-map>
+    <div class="container-infos">
+        <div class="container-infos__imgs">
+            @if(loading){
+                <app-loading></app-loading>
+            } @else {
+                @for (item of listCoffeeShop; track item) {
+                    <figure class="container-infos__imgs_card-img">
+                        <img  [src]="item.urlImage" [alt]="item.name">
+                        <figcaption>
+                            <h2>{{ item.name }}</h2>
+                            <p>{{ item.address }}</p>
+                        </figcaption>
+                    </figure>
+                }@empty {
+                    <p>Cafeteria não encontrada ):</p>
+                }
+            }
+        </div>
+        <div class="container-infos__map">
+            <google-map height="600px" [options]="options"> </google-map>
+        </div>
     </div>
 </section>

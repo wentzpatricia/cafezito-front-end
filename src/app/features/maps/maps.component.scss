@@ -8,4 +8,116 @@
     padding-bottom: 40px;
     top:0;
     width: 100%;
+
+    header { margin: 150px 0 100px 0;}
 }
+
+.container-infos {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 40px;
+
+    &__imgs {
+        display: flex;
+        flex-wrap: wrap;
+       // justify-content: space-between;
+        width: 45%;
+        position: relative;
+        min-height: 500px;
+        overflow: hidden;
+        margin-right: 40px;
+
+        &_card-img {
+            display: inline-block;
+            margin: 8px;
+            max-width: 320px;
+            min-width: 240px;
+            overflow: hidden;
+            position: relative;
+            text-align: center;
+
+            img {
+                border-radius: 20px;
+                height: 300px;
+                width: 300px;
+                object-fit: cover;
+                transition: filter 0.3s ease, opacity 0.3s ease;
+            }
+
+            &:hover img {
+                filter: blur(5px); 
+                opacity: 0.7;
+            }
+
+            &::before,
+            &::after {
+                filter: blur(5px);
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                content: '';
+                transition: all 0.3s ease;
+                z-index: 1;
+                opacity: 0;
+                transform: scaleY(2);
+            }
+
+            figcaption {
+                background-color: $white;
+                position: absolute;
+                top: 50%;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                border-radius: 0 0 20px 20px;
+                align-items: center;
+                z-index: 1;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                line-height: 1.1em;
+                opacity: 0;
+                z-index: 2;
+                transition-delay: 0.1s;
+                padding: 15px;
+
+                h2 {
+                    font-size: $font-size-normal;
+                    font-weight: $font-weight-bold;
+                }
+
+                p {
+                    font-size: $font-size-normal;
+                    text-wrap: wrap;
+                }
+            }
+        }
+    
+        &_card-img * {
+            box-sizing: border-box;
+            transition: all 0.45s ease;
+            
+        }
+
+        &_card-img:hover::before,
+        &_card-img:hover::after {
+            transform: scale(1);
+            opacity: 1;
+        }
+
+        &_card-img:hover figcaption {
+            opacity: 1;
+        }
+    }
+
+    &__map {
+        width: 55%;
+        ::ng-deep .map-container { 
+            width: 100% !important;
+            border-radius: 0 35px 35px 0;
+        }
+    }
+}
+
