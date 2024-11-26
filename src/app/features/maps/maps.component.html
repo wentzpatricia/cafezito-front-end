@@ -22,7 +22,17 @@
             }
         </div>
         <div class="container-infos__map">
-            <google-map height="600px" [options]="options"> </google-map>
+            <google-map mapId="yourMapId" height="600px" [options]="options">
+                @for (position of advancedMarkerPositions; track position) {
+                  <map-advanced-marker 
+                  #markerElem="mapAdvancedMarker" 
+                  [position]="position" 
+                  [options]="advancedMarkerOptions" 
+                  [content]="position.content"
+                  (mapClick)="openInfoWindow(markerElem)"/>
+                }
+                <map-info-window>Info Window content</map-info-window>
+            </google-map>
         </div>
     </div>
 </section>
