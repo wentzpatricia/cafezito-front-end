@@ -17,21 +17,33 @@
     justify-content: space-between;
     margin: 0 40px;
 
+    @include tablet {
+        align-items: center;
+        flex-direction: column;
+        justify-content: center;
+        margin: 0;
+    }
+
     &__imgs {
         display: flex;
         flex-wrap: wrap;
-       // justify-content: space-between;
         width: 40%;
         position: relative;
         min-height: 500px;
         overflow: hidden;
         margin-right: 40px;
 
+        @include tablet {
+            align-items: center;
+            justify-content: center;
+            margin: 0;
+            width: 90%;
+            
+        }
+
         &_card-img {
             display: inline-block;
             margin: 8px;
-            max-width: 320px;
-            min-width: 240px;
             overflow: hidden;
             position: relative;
             text-align: center;
@@ -117,6 +129,15 @@
         ::ng-deep .map-container { 
             width: 100% !important;
             border-radius: 0 35px 35px 0;
+
+            @include tablet {
+                border-radius: 35px;
+            }
+        }
+
+        @include tablet {
+            margin: 0 auto;
+            width: 90%;
         }
     }
 }
