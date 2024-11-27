@@ -23,13 +23,13 @@
     }
     img {
         //border-radius: 0px 0px 300px 300px;
-         border-radius: 0% 100% 32% 68% / 79% 0% 100% 21% ;
+         //border-radius: 0% 100% 32% 68% / 79% 0% 100% 21% ;
          max-height: 600px;
          position: absolute;
-         object-fit: cover;
+         //bject-fit: cover;
          filter: opacity(85%);
          top: 0;
-         width: 100%;
+         //width: 100%;
         
          @include tablet {
             max-height: 400px;
