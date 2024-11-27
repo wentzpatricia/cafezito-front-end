@@ -17,6 +17,7 @@ export class MapsComponent implements OnInit {
   options: google.maps.MapOptions = {
     center: {lat: -30.03522036200517, lng: -51.22660642808879},
     zoom: 12,
+    mapId: 'ad03ce7bab15585a'
   };
  
   advancedMarkerOptions: google.maps.marker.AdvancedMarkerElementOptions = {gmpDraggable: false};
@@ -26,7 +27,6 @@ export class MapsComponent implements OnInit {
   selectedCoffeeShop: CoffeeShop | null = null; 
 
   ProductTag = ProductTagEnum;
-  
 
   constructor(
     private listCoffeeShopService : ListCoffeeShopService
@@ -99,5 +99,5 @@ export class MapsComponent implements OnInit {
     }
     this.infoWindow.open(marker);
   }
-  
+
 }
