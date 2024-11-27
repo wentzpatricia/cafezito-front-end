@@ -11,7 +11,6 @@ export class ListCoffeeShopService {
     constructor(private requestsService: RequestsService) {}
     
     getAllCoffeeShop(tags?: ProductTagEnum[]): Observable<CoffeeShop[]> {
-        console.log(tags)
         const tagsParam = tags && tags.length > 0 ? tags.map(tag => `tags=${tag}`).join('&') : '';
         const url = tagsParam ? `coffee-shop?${tagsParam}` : `coffee-shop`;
     

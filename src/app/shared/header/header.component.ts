@@ -18,8 +18,8 @@ export class HeaderComponent {
   mediaQueryListener!: () => void;
 
   data: ISidebarData[] = [
-    { routeLink: '', labelTag: 'cafeterias' },
-    { routeLink: '', labelTag: 'mapa' },
+    { routeLink: '/coffe-shop', labelTag: 'cafeterias' },
+    { routeLink: '/maps', labelTag: 'mapa' },
     { routeLink: '', labelTag: 'promoções' },
   ];
 

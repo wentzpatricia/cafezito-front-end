@@ -1,0 +1,61 @@
+<section class="container-map">
+    <header>
+        <app-filter (filtersChanged)="onFiltersChanged($event)"></app-filter>
+    </header>
+    
+    <div class="container-infos"> 
+        <div class="container-infos__imgs">
+            <div class="search-address flex flex-column">
+                <label for="address">Busque por um endereço</label>
+                <div class="search-address__btn">
+                    <input #autocompleteInput pInputText id="address"/>
+                    <button (click)="initializeAutocomplete()" pButton label="Buscar" class="p-button-primary"></button>
+                    <button (click)="clearSearch()" pButton label="Limpar" class="p-button-secondary"></button>
+                </div>
+            </div>
+            <div class="container-infos__imgs_cards">
+                @if(loading){
+                    <app-loading></app-loading>
+                } @else {
+                    @for (item of listCoffeeShop; track item) {
+                        <figure class="container-infos__imgs_card-img" 
+                        (click)="highlightMarker(item.latitude, item.longitude, item.id)">
+                            <img  [src]="item.urlImage" [alt]="item.name">
+                            <figcaption>
+                                <h2>{{ item.name }}</h2>
+                                <p>{{ item.address }}</p>
+                            </figcaption>
+                        </figure>
+                    }@empty {
+                        <p>Cafeteria não encontrada ):</p>
+                    }
+                }
+            </div>
+        </div>
+        <div class="container-infos__map">
+            <google-map mapId="yourMapId" height="600px" [options]="options">
+                @for (position of advancedMarkerPositions; track position) {
+                  <map-advanced-marker 
+                  #markerElem="mapAdvancedMarker" 
+                  [position]="position" 
+                  [options]="advancedMarkerOptions" 
+                  [content]="position.content"
+                  (mapClick)="openInfoWindow(markerElem, position.coffeeShopData)"/>
+
+                  <map-info-window>
+                    @if(selectedCoffeeShop){
+                        <div>
+                        <h2>{{ selectedCoffeeShop.name }}</h2>
+                        <p>{{ selectedCoffeeShop.address }}</p>
+                        @if(selectedCoffeeShop.urlImage){
+                            <img [src]="selectedCoffeeShop.urlImage" alt="{{ selectedCoffeeShop.name }}" style="width: 100%; max-width: 200px;">
+                        }
+                        </div>
+                    }
+                  </map-info-window>
+                }
+                
+            </google-map>
+        </div>
+    </div>
+</section>

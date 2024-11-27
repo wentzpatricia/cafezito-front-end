@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Output, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { ProductTagEnum } from '../../_models/coffee-shop.enum';
+import { ProductTagEnum } from '../../features/coffe-shop/_models/coffee-shop.enum';
 
 @Component({ selector: 'app-filter', templateUrl: './filter.component.html', styleUrl: './filter.component.scss' })
 export class FilterComponent implements OnInit {
