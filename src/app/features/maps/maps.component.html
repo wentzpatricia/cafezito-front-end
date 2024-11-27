@@ -9,7 +9,8 @@
                 <app-loading></app-loading>
             } @else {
                 @for (item of listCoffeeShop; track item) {
-                    <figure class="container-infos__imgs_card-img">
+                    <figure class="container-infos__imgs_card-img" 
+                    (click)="highlightMarker(item.latitude, item.longitude, item.id)">
                         <img  [src]="item.urlImage" [alt]="item.name">
                         <figcaption>
                             <h2>{{ item.name }}</h2>
@@ -29,9 +30,17 @@
                   [position]="position" 
                   [options]="advancedMarkerOptions" 
                   [content]="position.content"
-                  (mapClick)="openInfoWindow(markerElem)"/>
+                  (mapClick)="openInfoWindow(markerElem, position.coffeeShopData)"/>
+
+                  <map-info-window>
+                    <div *ngIf="selectedCoffeeShop">
+                      <h2>{{ selectedCoffeeShop.name }}</h2>
+                      <p>{{ selectedCoffeeShop.address }}</p>
+                      <img [src]="selectedCoffeeShop.urlImage" alt="{{ selectedCoffeeShop.name }}" style="width: 100%; max-width: 200px;">
+                    </div>
+                  </map-info-window>
                 }
-                <map-info-window>Info Window content</map-info-window>
+                
             </google-map>
         </div>
     </div>
