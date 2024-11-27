@@ -18,4 +18,6 @@ export class HomeComponent {
   homemCafeteria = '../../../assets/images/homem-cafeteria.png';
   aguaGas = '../../../assets/images/agua-gas-cafe.png';
 
+  
+
 }

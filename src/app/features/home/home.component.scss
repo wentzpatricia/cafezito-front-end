@@ -8,33 +8,49 @@
     flex-direction: column;
     padding-bottom: 60px;
     width: 100%;
-
+    
     h1 {
-        color: var(--primary-100);
+        color: #DAD1C8;
         font-size: 70px;
-        font-weight: 600px;
+        font-weight: 500px;
         letter-spacing: 1px;
         margin-bottom: 08rem;
         margin-left: 8px;
-        padding: 0 100px;
+        padding: 40px 100px;
         position: relative;
-        width: 55%;
+        width: 50%;
         z-index: 2;
+        
     }
-    img {
-        //border-radius: 0px 0px 300px 300px;
-         //border-radius: 0% 100% 32% 68% / 79% 0% 100% 21% ;
-         max-height: 600px;
-         position: absolute;
-         //bject-fit: cover;
-         filter: opacity(85%);
-         top: 0;
-         //width: 100%;
+
+    img {       
+        position: absolute;
+        max-height: 400px;        
+        top: 28%; // Alinha verticalmente ao centro (opcional)
+        right: 0; // Encosta no lado direito
+        transform: translateY(-50%); // Centraliza verticalmente
+        margin-right: 15rem; // Espaçamento adicional, se necessário
+        filter: opacity(85%);
+    }
+
+    button-entrar { 
+        color: #DAD1C8;
+        float: right;
+        margin-right: 15rem;
+        margin-left: 80rem;
+        top: 3%; 
+        right: 0;
+        transform: translateY(-50%); 
+        justify-content: flex-end;
+
+    }   
+      
+        
         
          @include tablet {
             max-height: 400px;
           }
         
-        }
+        
 
 }
