@@ -11,7 +11,7 @@ import { ProgressLoaderComponent } from './progress-loader/progress-loader.compo
 @NgModule({
   declarations: [
     BackButtonComponent,
-    HeaderComponent,
+    HeaderComponent,    
     LoadingComponent,
     NavbarMobileComponent,
     ProgressLoaderComponent,
@@ -19,7 +19,7 @@ import { ProgressLoaderComponent } from './progress-loader/progress-loader.compo
   imports: [CommonModule, RouterModule],
   exports: [
     BackButtonComponent,
-    HeaderComponent,
+    HeaderComponent,    
     LoadingComponent,
     NavbarMobileComponent,
     ProgressLoaderComponent,

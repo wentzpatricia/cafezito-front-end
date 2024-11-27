@@ -1,0 +1,40 @@
+@import "../../core/scss/mixins.scss";
+@import "../../core/scss/variables.scss";
+
+.container-list {
+    background-color: #896A50;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 60px;
+    width: 100%;
+
+    h1 {
+        color: var(--primary-100);
+        font-size: 70px;
+        font-weight: 600px;
+        letter-spacing: 1px;
+        margin-bottom: 08rem;
+        margin-left: 8px;
+        padding: 0 100px;
+        position: relative;
+        width: 55%;
+        z-index: 2;
+    }
+    img {
+        //border-radius: 0px 0px 300px 300px;
+         border-radius: 0% 100% 32% 68% / 79% 0% 100% 21% ;
+         max-height: 600px;
+         position: absolute;
+         object-fit: cover;
+         filter: opacity(85%);
+         top: 0;
+         width: 100%;
+        
+         @include tablet {
+            max-height: 400px;
+          }
+        
+        }
+
+}
