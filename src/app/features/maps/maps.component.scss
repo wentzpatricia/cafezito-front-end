@@ -154,6 +154,11 @@
 .search-address {
     width: 100%;
 
+    label { 
+        color: var(--primary-200);
+        font-weight: $font-weight-bold;
+    }
+
     &__btn {
         align-items: center;
         display: flex;
@@ -163,11 +168,6 @@
             width: 70%;
         }
     
-        label { 
-            color: var(--primary-200);
-            font-weight: $font-weight-bold;
-        }
-
         button { margin: 0 5px !important; }
     }
     
