@@ -1,4 +1,4 @@
-import { Component, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import { ProductTagEnum } from '../coffe-shop/_models/coffee-shop.enum';
 import { ListCoffeeShopService } from '../coffe-shop/_services/list-coffee-shop.service';
 import { CoffeeShop } from '../coffe-shop/_models/list-coffee.interface';
@@ -9,8 +9,10 @@ type MarkerPosition = google.maps.LatLngLiteral & {
   coffeeShopData?: CoffeeShop;
 };
 
+
 @Component({ selector: 'app-maps', templateUrl: './maps.component.html', styleUrl: './maps.component.scss' })
-export class MapsComponent implements OnInit {
+export class MapsComponent implements OnInit, AfterViewInit{
+  @ViewChild('autocompleteInput', { static: true }) autocompleteInput!: ElementRef;
   @ViewChild(MapInfoWindow) infoWindow!: MapInfoWindow;
   @ViewChildren('markerElem') markers!: QueryList<MapAdvancedMarker>;
 
@@ -24,6 +26,7 @@ export class MapsComponent implements OnInit {
   advancedMarkerPositions: MarkerPosition[] = [];
   listCoffeeShop: CoffeeShop[] = [];
   loading: boolean = false;
+  placesMarkers: MarkerPosition[] = [];
   selectedCoffeeShop: CoffeeShop | null = null; 
 
   ProductTag = ProductTagEnum;
@@ -36,38 +39,85 @@ export class MapsComponent implements OnInit {
     this.getAllCoffeeShop();
   }
 
-  addAdvancedMarker(lat: number, lng: number, coffee: CoffeeShop) {
-    const marker = "../../../assets/images/marker.png";
-    const imgTag = document.createElement("img");
-    imgTag.src = marker;
+  ngAfterViewInit() {
+    this.initializeAutocomplete();
+  }
 
+  addAdvancedMarker(lat: number, lng: number, coffee: CoffeeShop, isFromPlaces: boolean = false) {
+    const markerPath = isFromPlaces 
+      ? "../../../assets/images/marker-others.png" 
+      : "../../../assets/images/marker.png";
+  
+    const imgTag = document.createElement("img");
+    imgTag.src = markerPath;
+  
     this.advancedMarkerPositions.push({
       lat: lat,
       lng: lng,
       content: imgTag,
-      coffeeShopData : coffee
+      coffeeShopData: coffee
     });
   }
 
+  clearSearch() {
+    this.autocompleteInput.nativeElement.value = '';
+    this.placesMarkers = [];
+    this.updateAllMarkers();
+    this.options.center = { lat: -30.03522036200517, lng: -51.22660642808879 };
+    this.options.zoom = 12;
+  }
+  
+  createMarkerIcon(isFromPlaces: boolean): HTMLElement {
+    const marker = document.createElement('img');
+    marker.src = isFromPlaces ? '../../../assets/images/marker-others.png' : '../../../assets/images/marker.png';
+    return marker;
+  }
+  
+
+  findNearbyCoffeeShops(location: { lat: number; lng: number }) {
+    const service = new google.maps.places.PlacesService(document.createElement('div'));
+  
+    const request = {
+      location: new google.maps.LatLng(location.lat, location.lng),
+      radius: 2000,
+      type: 'cafe',
+    };
+  
+    this.placesMarkers = [];
+  
+    service.nearbySearch(request, (results, status) => {
+      if (status === google.maps.places.PlacesServiceStatus.OK && results) {
+        results.forEach((place) => {
+          if(place && place.geometry && place.geometry.location)
+          this.placesMarkers.push({
+            lat: place.geometry.location.lat(),
+            lng: place.geometry.location.lng(),
+            content: this.createMarkerIcon(true),
+            coffeeShopData: { name: place.name, address: place.vicinity } as CoffeeShop,
+          });
+        });
+  
+        this.updateAllMarkers();
+      }
+    });
+  }
+  
+  
   getAllCoffeeShop(tags?: ProductTagEnum[]) {
     this.loading = true;
-    this.advancedMarkerPositions = [];
-    this.listCoffeeShopService.getAllCoffeeShop(tags ? tags : undefined).subscribe({
+    this.listCoffeeShopService.getAllCoffeeShop(tags).subscribe({
       next: (res: CoffeeShop[]) => {
         this.listCoffeeShop = res;
-
-        this.listCoffeeShop.map((item)=>{
-          this.addAdvancedMarker(item.latitude, item.longitude, item);
-        })
-
+        this.updateAllMarkers();
         this.loading = false;
       },
       error: (err) => {
         this.loading = false;
-        console.error(err)
+        console.error(err);
       }
-    })
+    });
   }
+  
 
   highlightMarker(latitude: number, longitude: number, id: string) {
     this.options = {
@@ -84,9 +134,33 @@ export class MapsComponent implements OnInit {
       this.openInfoWindow(marker, coffeeShop);
     }
   }
-  
 
-    
+  initializeAutocomplete() {
+    const autocomplete = new google.maps.places.Autocomplete(
+      this.autocompleteInput.nativeElement,
+      {
+        types: ['geocode'],
+        componentRestrictions: { country: 'BR' },
+      }
+    );
+  
+    autocomplete.addListener('place_changed', () => {
+      const place = autocomplete.getPlace();
+      if (place.geometry && place.geometry.location) {
+        const location = {
+          lat: place.geometry.location.lat(),
+          lng: place.geometry.location.lng(),
+        };
+  
+        this.options.center = location;
+        this.options.zoom = 15;
+  
+        this.findNearbyCoffeeShops(location);
+      }
+    });
+  }
+  
+  
   onFiltersChanged(activeFilters: ProductTagEnum[]): void {
     this.getAllCoffeeShop(activeFilters)
   }
@@ -100,4 +174,15 @@ export class MapsComponent implements OnInit {
     this.infoWindow.open(marker);
   }
 
+  updateAllMarkers() {
+    this.advancedMarkerPositions = [
+      ...this.listCoffeeShop.map(shop => ({
+        lat: shop.latitude,
+        lng: shop.longitude,
+        content: this.createMarkerIcon(false),
+        coffeeShopData: shop,
+      })),
+      ...this.placesMarkers
+    ];
+  }
 }
