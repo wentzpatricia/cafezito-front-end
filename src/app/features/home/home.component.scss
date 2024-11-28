@@ -49,25 +49,66 @@
     top:0;
     right: 0;    
 }
-.titulo_cafezito{
+.titulo {
     background-color: #DAD1C8;
-    height: 50%;
-    display: flex;
-    flex-direction: column;
-    top: 0;
-    width: 100%;
+    display: flex; // Flexbox para organizar os blocos
+    flex-direction: column; // Organiza os filhos verticalmente
+    width: 100%; // Faz o contêiner ocupar toda a largura
+    gap: 14px; // Espaçamento entre os blocos
+  }
+  
+  .titulo_cafezito {
+    display: flex; // Flexbox para alinhar horizontalmente
+    justify-content: space-between; // Espaça os itens de ponta a ponta
+    align-items: center; // Alinha verticalmente ao centro
+    width: 90%; // Ocupa toda a largura
+    padding: 0; // Adiciona espaçamento interno (opcional)
+    box-sizing: border-box; // Inclui padding no cálculo da largura total
     
-    h1 {
-        color: #896A50;
-        font-size: 70px;
-        font-weight: 500px;
-        letter-spacing: 1px;
-        margin-bottom: 08rem;
-        margin-left: 8px;
-        padding: 40px 100px;
-        position: relative;
-        width: 50%;
-        z-index: 2;
-        
-    }    
-}
+  }
+  
+  .titulo_cafezito h1 {
+    color: #896A50;
+    font-size: 100px;
+    font-weight: 800px;
+    letter-spacing: 1px;
+    margin-bottom: 08rem;
+    margin-left: 7.5px;
+    padding: 40px 80px;
+    position: relative;
+    width: 100%;
+    z-index: 2;
+  }
+  
+  .titulo_cafezito img {
+    display: flex; // Flexbox para organizar as imagens
+    justify-content: space-between; // Espaça as imagens de ponta a ponta
+    align-items: center; // Alinha verticalmente ao centro
+    width: 90%; // Ocupa toda a largura
+    padding: 0 ; // Espaçamento interno
+    gap: 50px; // Espaçamento entre as imagens (opcional)
+    box-sizing: border-box; // Inclui padding no cálculo da largura total
+    margin-bottom: 16px;
+    margin-top: 16px;
+    margin-right: 0;
+  }
+  
+  .imagens {
+    display: flex; // Flexbox para organizar as imagens
+    justify-content: space-between; // Espaça as imagens de ponta a ponta
+    align-items: center; // Alinha verticalmente ao centro
+    width: 100%; // Ocupa toda a largura
+    padding: 0 ; // Espaçamento interno
+    gap: 16px; // Espaçamento entre as imagens (opcional)
+    box-sizing: border-box; // Inclui padding no cálculo da largura total
+  }
+  
+  .imagens img {
+    width: 32%; // Ajusta o tamanho das imagens
+    height: auto; // Mantém a proporção
+    object-fit: contain; // Ajusta o conteúdo
+    margin-bottom: 16px;
+    margin-top: 16px;
+    margin-right: 0;
+  }
+  
