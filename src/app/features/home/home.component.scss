@@ -164,22 +164,26 @@
     align-items: center; // Alinha verticalmente os itens no centro
     gap: 250px; // Espaçamento entre a imagem e o texto
     background-color:  #f5f5f5; // Cor de fundo para a seção
-    padding: 0; // Espaçamento interno        
+    padding: 50px; // Espaçamento interno 
+    top: 30px;               
+    width: 100%;
+     
     
 
     &__texto {
-        width: 70%; // Define o texto ocupando metade da largura
-        font-size: 3rem;        
+        width: 100%; // Define o texto ocupando metade da largura
+        font-size: 4 px;        
         line-height: 1.5rem; // Altura da linha para melhorar a legibilidade
         color:#a67c5c;            
-        z-index: 2;       
+        z-index: 2; 
+        left: 50 px;      
     }
   
     &__imagem {
-        width: 35%; // Define a imagem ocupando metade da largura
-        height: auto; // Mantém a proporção da imagem
-        object-fit: cover; // Ajusta o conteúdo da imagem para cobrir o espaço disponível
+        width: 30%; // Define a imagem ocupando metade da largura         
         border-radius: 8px; // Arredonda os cantos da imagem
+        top: 30px;        
+        height: 50%;   
       
     }
 }  
