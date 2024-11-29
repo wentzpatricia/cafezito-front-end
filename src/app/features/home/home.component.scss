@@ -171,16 +171,18 @@
     
 
     &__texto {
-        width: 100%; // Define o texto ocupando metade da largura
-        font-size: 4 px;        
-        line-height: 1.5rem; // Altura da linha para melhorar a legibilidade
+        width: 100%; 
+        font-size: 1.5rem;        
+        line-height: 2rem; 
         color:#a67c5c;            
         z-index: 2; 
         left: 50 px;      
     
         strong {
-            color: #a67c5c; // Destaque para o texto em negrito
-            font-weight: bold; // Define o texto em negrito
+            font-size: 2rem;
+            line-height: 3rem;  
+            color: #a67c5c; 
+            font-weight: bold; 
         }
     } 
   
@@ -191,4 +193,6 @@
         height: 50%;   
       
     }
-}  
+}
+
+  
