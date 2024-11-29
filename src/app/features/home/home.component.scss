@@ -50,7 +50,7 @@
     right: 0;    
 }
 .titulo {
-    background-color: #DAD1C8;
+    background-color: #F2F2F2;
     display: flex; // Flexbox para organizar os blocos
     flex-direction: column; // Organiza os filhos verticalmente
     width: 100%; // Faz o contêiner ocupar toda a largura
@@ -58,10 +58,12 @@
   }
   
   .titulo_cafezito {
+    background-color: #F2F2F2;
     display: flex; // Flexbox para alinhar horizontalmente
     justify-content: space-between; // Espaça os itens de ponta a ponta
     align-items: center; // Alinha verticalmente ao centro
     width: 90%; // Ocupa toda a largura
+    height: 200px;
     padding: 0; // Adiciona espaçamento interno (opcional)
     box-sizing: border-box; // Inclui padding no cálculo da largura total
     
@@ -84,13 +86,15 @@
     display: flex; // Flexbox para organizar as imagens
     justify-content: space-between; // Espaça as imagens de ponta a ponta
     align-items: center; // Alinha verticalmente ao centro
-    width: 90%; // Ocupa toda a largura
+    width: 60%; // Ocupa toda a largura
     padding: 0 ; // Espaçamento interno
-    gap: 50px; // Espaçamento entre as imagens (opcional)
+    gap: 16px; // Espaçamento entre as imagens (opcional)
     box-sizing: border-box; // Inclui padding no cálculo da largura total
-    margin-bottom: 16px;
+    margin-bottom: 30px;
     margin-top: 16px;
     margin-right: 0;
+    object-fit: contain;
+    height: auto;
   }
   
   .imagens {
