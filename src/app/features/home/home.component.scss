@@ -177,7 +177,12 @@
         color:#a67c5c;            
         z-index: 2; 
         left: 50 px;      
-    }
+    
+        strong {
+            color: #a67c5c; // Destaque para o texto em negrito
+            font-weight: bold; // Define o texto em negrito
+        }
+    } 
   
     &__imagem {
         width: 30%; // Define a imagem ocupando metade da largura         
