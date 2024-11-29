@@ -55,7 +55,7 @@
     flex-direction: column; // Organiza os filhos verticalmente
     width: 100%; // Faz o contêiner ocupar toda a largura
     gap: 14px; // Espaçamento entre os blocos
-  }
+  
   
   .titulo_cafezito {
     background-color: #F2F2F2;
@@ -71,9 +71,9 @@
   
   .titulo_cafezito h1 {
     color: #896A50;
-    font-size: 100px;
-    font-weight: 800px;
-    letter-spacing: 1px;
+    font-size: 170px;
+    font-weight: 900px;
+    letter-spacing: 2px;
     margin-bottom: 08rem;
     margin-left: 7.5px;
     padding: 40px 80px;
@@ -86,15 +86,16 @@
     display: flex; // Flexbox para organizar as imagens
     justify-content: space-between; // Espaça as imagens de ponta a ponta
     align-items: center; // Alinha verticalmente ao centro
-    width: 60%; // Ocupa toda a largura
+    width: 100%; // Ocupa toda a largura
     padding: 0 ; // Espaçamento interno
     gap: 16px; // Espaçamento entre as imagens (opcional)
     box-sizing: border-box; // Inclui padding no cálculo da largura total
     margin-bottom: 30px;
-    margin-top: 16px;
-    margin-right: 0;
-    object-fit: contain;
+    margin-top: 50px;
+    margin-right:60px;
+    object-fit: cover;
     height: auto;
+    
   }
   
   .imagens {
@@ -105,6 +106,7 @@
     padding: 0 ; // Espaçamento interno
     gap: 16px; // Espaçamento entre as imagens (opcional)
     box-sizing: border-box; // Inclui padding no cálculo da largura total
+    
   }
   
   .imagens img {
@@ -115,4 +117,69 @@
     margin-top: 16px;
     margin-right: 0;
   }
+}
+.descricao {
+    display: flex; // Define um layout horizontal
+    align-items: center; // Alinha verticalmente os itens no centro
+    gap: 250px; // Espaçamento entre a imagem e o texto
+    background-color: #896A50; // Cor de fundo para a seção
+    padding: 0; // Espaçamento interno
+    height: 100%;        
+    width: 100%;
+    
   
+    &__imagem {
+      width: 35%; // Define a imagem ocupando metade da largura
+      height: auto; // Mantém a proporção da imagem
+      object-fit: cover; // Ajusta o conteúdo da imagem para cobrir o espaço disponível
+      border-radius: 8px; // Arredonda os cantos da imagem
+    }
+  
+    &__texto {
+      width: 50%; // Define o texto ocupando metade da largura
+      font-size: 2rem;
+      font-weight: 200px; 
+      line-height: 1.5; // Altura da linha para melhorar a legibilidade
+      color:#DAD1C8; // Cor do texto (branco)      
+      padding: 40px 100px;
+      position: relative; 
+      z-index: 2;    
+      
+    }
+    @media (max-width: 768px) {
+        .descricao {
+          flex-direction: column; // Empilha os itens verticalmente
+          align-items: stretch; // Faz os itens ocuparem toda a largura
+        }
+      
+        .descricao__imagem,
+        .descricao__texto {
+          width: 100%; // Cada item ocupa toda a largura em telas menores
+        }
+      }      
+}
+
+.objetivo {
+    display: flex; // Define um layout horizontal
+    align-items: center; // Alinha verticalmente os itens no centro
+    gap: 250px; // Espaçamento entre a imagem e o texto
+    background-color:  #f5f5f5; // Cor de fundo para a seção
+    padding: 0; // Espaçamento interno        
+    
+
+    &__texto {
+        width: 70%; // Define o texto ocupando metade da largura
+        font-size: 3rem;        
+        line-height: 1.5rem; // Altura da linha para melhorar a legibilidade
+        color:#a67c5c;            
+        z-index: 2;       
+    }
+  
+    &__imagem {
+        width: 35%; // Define a imagem ocupando metade da largura
+        height: auto; // Mantém a proporção da imagem
+        object-fit: cover; // Ajusta o conteúdo da imagem para cobrir o espaço disponível
+        border-radius: 8px; // Arredonda os cantos da imagem
+      
+    }
+}  
