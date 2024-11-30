@@ -49,28 +49,107 @@
         </div>
         <img [src]="aguaGas" alt="Café e Agua com Gas" class="objetivo_imagem" style="width:500px" >                                
     </div>
-    <section class="diferenciais">
-        <h2 class="diferenciais__titulo">Nossos Diferenciais</h2>
-        <div class="diferenciais__grid">
-          <div class="diferenciais__grid__card">
-            <div class="diferenciais__grid__card-icon">💡</div>
-            <h3 class="diferenciais__grid__card-titulo">Plataforma Integrada</h3>
-            <p class="diferenciais__grid__card-descricao">
-              O Cafezito centraliza todas as informações sobre cafeterias em Porto Alegre, eliminando a necessidade de usar múltiplas plataformas.
-            </p>
+    <div class="diferencial">
+    <h2>Nossos Diferenciais</h2>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <section class="diferenciais">                    
+        <div class="grid-container">
+          <!-- Card 1 -->
+          <div class="card">
+            <div class="card">
+              <div class="flex align-items-center justify-content-center mb-3">
+                <i class="pi pi-objects-column" style="font-size: 2rem"></i>
+              </div>
+              <h3 class="text-center">Plataforma Integrada</h3>
+              <p class="text-justify">
+                O Cafezito centraliza todas as informações sobre
+                cafeterias em Porto Alegre, eliminando a necessidade
+                de usar múltiplas plataformas.
+              </p>
+            </div>
           </div>
-          <div class="diferenciais__grid__card">
-            <div class="diferenciais__grid__card-icon">☕</div>
-            <h3 class="diferenciais__grid__card-titulo">Experiência Personalizada</h3>
-            <p class="diferenciais__grid__card-descricao">
-              Com filtros específicos, como opções veganas, ambientes pet-friendly e qualidade de Wi-Fi, oferecemos busca adaptada às suas preferências.
-            </p>
+      
+          <!-- Card 2 -->
+          <div class="card">
+            <div class="card">
+              <div class="flex align-items-center justify-content-center mb-3">
+              <i class="pi pi-heart" style="font-size: 2rem"></i>
+              </div>
+              <h3 class="text-center">Experiência Personalizada</h3>
+              <p class="text-justify">
+                Com filtros específicos, como opções veganas/vegetarianas,
+                ambientes pet-friendly e qualidade de Wi-Fi,
+                oferecemos uma busca adaptada.
+              </p>
+            </div>
           </div>
-          <!-- Adicione outros cards aqui -->
+      
+          <!-- Card 3 -->
+          <div class="card">
+            <div class="card">
+              <div class="flex align-items-center justify-content-center mb-3">
+                <i class="pi pi-book" style="font-size: 2rem"></i>
+              </div>
+              <h3 class="text-center">Informações Abrangentes</h3>
+              <p class="text-justify">
+                Cada cafeteria tem um perfil completo, 
+                com detalhes sobre o ambiente, serviços e
+                classificações de preço.
+              </p>
+            </div>
+          </div>
+          <div class="linha-divisoria"></div>          
+          <div class="card">
+            <div class="card">
+              <div class="flex align-items-center justify-content-center mb-3">
+                <i class="pi pi-tags" style="font-size: 2rem"></i>
+              </div>
+              <h3 class="text-center">Vouchers e Ofertas</h3>
+              <p class="text-justify">
+                Ao utilizar o app, você tem acesso a promoções especiais,
+                tornando suas visitas ainda mais agradáveis e econômicas.
+              </p>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card">
+              <div class="flex align-items-center justify-content-center mb-3">
+                <i class="pi pi-users" style="font-size: 2rem"></i>
+              </div>
+              <h3 class="text-center">Interatividade e Comunidade</h3>
+              <p class="text-justify">
+                A seção e feedback permite que você compartilhe 
+                suas experiências e leia as avaliações de outros usuários, 
+                promovendo uma comunidade engajada e informada.
+              </p>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card">
+              <div class="flex align-items-center justify-content-center mb-3">
+                <i class="pi pi-map-marker" style="font-size: 2rem"></i>
+              </div>
+              <h3 class="text-center">Facilidade de Navegação</h3>
+              <p class="text-justify">
+                O mapa interativo é uma ferramenta intuitiva que permite
+                encontrar rapidamente cafeterias próximas, ajudando você a
+                planejar suas visitas de forma eficiente.
+              </p>
+            </div>
+          </div>          
         </div>
-      </section>    
-    <div>
-        <h1>Pronto para Conhecer o Cafezito</h1>
-        <img [src]="homemCafeteria" alt="Homem na cafeteria" >           
+      </section>
+          
+    <div class="homem-cafeteria">
+        <h1 class="homem-cafeteria-texto">Pronto para Conhecer o Cafezito</h1>
+        <p-button label="Entrar" class="button"/>
+        <img [src]="homemCafeteria" alt="Homem na cafeteria" class="homem-cafeteria-imagem" style="width: 500px;" >           
     </div>       
 </main>
