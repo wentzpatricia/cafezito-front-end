@@ -1,6 +1,6 @@
 <main > 
     <header class = "header-home">        
-      <button class="btn">entrar</button>
+      <button class="btn" (click)="goToLogin()">entrar</button>
     </header>         
     <div class = "container-list">        
         <h1>Descubra, saboreie e compartilhe o melhor café com o Cafezito</h1>
@@ -148,7 +148,7 @@
       </section>
       <div class="homem-cafeteria">        
           <h1>Pronto para conhecer o Cafezito?</h1>
-          <button class="btn">Criar conta</button>        
+          <button class="btn" (click)="goToRegister()">Criar conta</button>        
         <div class="image-container">
           <div class="circle">
             <img [src]="homemCafeteria" alt="Imagem de uma cafeteria" >

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -19,6 +20,15 @@ export class HomeComponent {
   aguaGas = '../../../assets/images/agua-gas-cafe.png';
   logo = '../../../assets/icones/logo-dark.png'
 
-  
+  constructor(private router: Router) {}
+
+  goToLogin() {
+    this.router.navigate(['/auth/login']);
+  }
+
+  goToRegister() {
+    this.router.navigate(['/auth/register']);
+  }
+
 
 }
