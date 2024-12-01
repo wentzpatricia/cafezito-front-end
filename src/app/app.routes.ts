@@ -27,6 +27,12 @@ export const routes: Routes = [
     loadChildren: () =>
       import('./features/maps/maps.module').then((m) => m.MapsModule),
   },
+  {
+    path: 'vouchers',
+    canActivate: [AuthGuard],
+    loadChildren: () =>
+      import('./features/vouchers/vouchers.module').then((m) => m.VouchersModule),
+  },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: '**', redirectTo: 'home' } 
 ];

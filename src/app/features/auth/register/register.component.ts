@@ -20,7 +20,7 @@ export class RegisterComponent implements OnInit {
   hide: boolean = true;
   hideConfirm: boolean = true;
   image = '../../../../assets/images/bg-login.png';
-  logo = '../../../../assets/icones/logo-completo-dark.svg';
+  logo = '../../../../assets/icones/logo-completo-dark.png';
   logoLight = '../../../../assets/icones/logo-light.png';
 
   constructor(

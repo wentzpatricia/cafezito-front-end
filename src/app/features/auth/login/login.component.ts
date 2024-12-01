@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
   isLoading: boolean = false;
   hide: boolean = true;
   image = '../../../../assets/images/bg-login.png';
-  logo = '../../../../assets/icones/logo-completo-dark.svg';
+  logo = '../../../../assets/icones/logo-completo-dark.png';
   logoLight = '../../../../assets/icones/logo-light.png';
 
   constructor(
