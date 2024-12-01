@@ -62,8 +62,25 @@
 .header-home {
     background-color: #896A50;
     position: absolute;
-    top:0;
-    right: 0;    
+    top:10px;
+    right: 0;
+
+    .btn{
+      padding: 0.75rem 1.5rem;      
+      border: none; 
+      background-color: #896A50;     
+      margin-top: 5px;
+      margin-bottom: 8rem;
+      margin-left: 120px;
+      margin-right: 10px;
+      color: #DAD1C8;
+      font-size: 1.5rem;
+      font-weight: bold;
+      cursor: pointer;     
+
+    }       
+
+        
 }
 .titulo {
     background-color: #F2F2F2;
@@ -313,14 +330,16 @@ width: 100%;
       background-color: #DAD1C8;
       border: none;
       border-radius: 5px;
-      margin-bottom: 200rem;
+      margin-bottom: 8rem;
       margin-left: 120px;
+      margin-right: 100rem;
       color: #210F07;
       font-size: 1rem;
       cursor: pointer;
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
       transition: background-color 0.3s;      
       }  
+      
 
   .image-container {
     position: absolute;
@@ -347,6 +366,18 @@ width: 100%;
       }
     }
   }
+}
+.logos{
+    background-color: #896A50;
+    display:flex;
+    position: absolute;    
+    margin-right:15rem;        
+    margin-bottom: 20px;       
+    width: 100%;    
+    justify-content: flex-end; /* Alinha os itens à direita */
+    gap: 20px; /* Espaçamento entre os ícones */
+    padding: 10px 20px; /* Espaçamento interno para ajuste de layout */
+    color:#DAD1C8; 
 }
           
  
