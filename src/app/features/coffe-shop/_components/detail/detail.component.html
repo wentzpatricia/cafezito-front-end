@@ -29,7 +29,7 @@
                         <h3><span>Endereço</span>{{ coffeShopDetail.address}}</h3>
                     }
                     <div>
-                        <p-button  size="small" label="Ver no mapa"></p-button>
+                        <p-button  size="small" label="Ver no mapa" [routerLink]="'/maps'"></p-button>
                         
                         @if(coffeShopDetail.environment && coffeShopDetail.environment.socialMedias.length > 0){
                             <span>Redes Sociais</span>

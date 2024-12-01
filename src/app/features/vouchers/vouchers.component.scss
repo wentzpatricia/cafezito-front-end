@@ -1,0 +1,65 @@
+@import "../../core/scss/mixins.scss";
+@import "../../core/scss/variables.scss";
+
+.container-vouchers {
+    background-color: var(--primary-300);
+    min-height: 100vh;
+    position: absolute;
+    padding-bottom: 40px;
+    top:0;
+    width: 100%;
+
+    &__tab {
+        padding: 0 60px;
+    }
+
+    .header {
+        display: flex;
+        justify-content: center;
+        padding: 60px;
+
+        @include tablet {
+            align-items: center;
+            padding: 40px 30px;
+            flex-direction: column-reverse;
+        }
+
+        &__img {
+            width: 70%;
+            img { width: 100%;}
+
+            @include medium-web {
+                width: 80%;
+            }
+
+            @include tablet {
+                width: 90%;
+            }
+        }
+
+        &__text {
+            color: var(--primary-200);
+            margin-right: -400px;
+            z-index: 5;
+            width: 40%;
+
+            h2 { font-size: $font-size-4xl; font-weight: $font-weight-black;}
+
+            span { font-size: $font-size-3xl; font-weight: $font-weight-bold;}
+
+            @include medium-web {
+                margin-right: -200px;
+                width: 60%;
+
+                h2 { font-size: $font-size-3xl; font-weight: $font-weight-black;}
+
+                span { font-size: $font-size-extra-large; font-weight: $font-weight-bold;}
+            }
+
+            @include tablet {
+                margin: 0;
+                width: 90%;
+            }
+        }
+    }
+}

@@ -7,4 +7,5 @@ import { Component } from '@angular/core';
 })
 export class VouchersComponent {
 
+    img = '../../../assets/images/background-voucher.png'
 }
