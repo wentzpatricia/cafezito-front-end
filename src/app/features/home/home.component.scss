@@ -262,10 +262,10 @@ width: 100%;
   display: flex;
   flex-wrap: wrap; // Permite quebra de linha
   justify-content: space-between; // Espaçamento entre os itens
-  max-width: 1200px;
-  top: 16px;
+  max-width: 1700px;
+  top: 50px;
   margin: 0 auto;
-  gap: 1.5rem; // Espaçamento entre os itens
+  gap: 1.4rem; // Espaçamento entre os itens
    
 }
 
@@ -274,6 +274,8 @@ width: 100%;
   background-color: #BFAE9F;
   padding: 1.5rem;
   color:#261308;
+  font-size: 20px;
+  letter-spacing: 1px;
   text-align: justify; 
 }
 .linha-divisoria{
@@ -282,39 +284,71 @@ width: 100%;
   background-color: #896A50;
   margin: 20px 0;
 }
-
+// Container principal
 .homem-cafeteria {
-  background-color: var(--primary-100);
-  height: 100%;
+  background-color: #896A50;
+  height: 50%;
   display: flex;
   flex-direction: column;
-  padding-bottom: 60px;
-  width: 100%;  
+  padding: 0px;
+  width: 100%; 
+      
 
-  &__imagem {
-    width: 35%; // Define a imagem ocupando metade da largura
-    height: auto; // Mantém a proporção da imagem
-    object-fit: cover; // Ajusta o conteúdo da imagem para cobrir o espaço disponível
-    border-radius: 8px; // Arredonda os cantos da imagem
-  }
+    h1 {
+        color: #DAD1C8;
+        font-size: 70px;
+        font-weight: 500px;
+        letter-spacing: 1px;
+        margin-bottom: 70px;
+        margin-left: 8px;
+        margin-top: 70px;
+        padding: 40px 100px;
+        position: relative;
+        width: 50%;
+        z-index: 2;
+    }
 
-  &__texto {
-    width: 50%; // Define o texto ocupando metade da largura
-    font-size: 2rem;
-    font-weight: 200px; 
-    line-height: 1.5; // Altura da linha para melhorar a legibilidade
-    color:#DAD1C8; // Cor do texto (branco)      
-    padding: 40px 100px;
-    position: relative; 
-    z-index: 2;    
-    
+    .btn {
+      padding: 0.75rem 1.5rem;
+      background-color: #DAD1C8;
+      border: none;
+      border-radius: 5px;
+      margin-bottom: 200rem;
+      margin-left: 120px;
+      color: #210F07;
+      font-size: 1rem;
+      cursor: pointer;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: background-color 0.3s;      
+      }  
+
+  .image-container {
+    position: absolute;
+    max-height: 300px;   
+    right: 0; // Encosta no lado direito    
+    margin-right: 15rem; // Espaçamento adicional, se necessário
+    margin-bottom: 5px;
+    margin-top: 100px;
+    filter: opacity(85%);        
+    border-radius: 10px;
+    padding: 0px;   
+
+    .circle {
+      width: 500px;
+      height: 500px;
+      border-radius: 50%;
+      overflow: hidden;
+      box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
   }
 }
-      
-  
+          
+ 
 
 
-
-  
-
-  
