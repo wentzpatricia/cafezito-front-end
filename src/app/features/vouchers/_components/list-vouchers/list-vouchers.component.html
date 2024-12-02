@@ -1,1 +1,20 @@
-<p>list-vouchers works!</p>
+<section class="vouchers">
+    @if(loading){
+        <app-loading></app-loading>
+    } @else {
+        @for (item of listVouchers; track $index) {
+            <div class="vouchers__card"> 
+                <h2 class="vouchers__card_voucher">{{item.voucher}}</h2>
+                <p class="vouchers__card_description">{{item.voucherDescription}}</p>
+                <h3 class="vouchers__card_coffee">{{item.coffeeShop.name}}</h3>
+                @if(item.redeemedAt){
+                    <span>Resgatado</span>
+                }@else {
+                    <p-button size="small" label="Resgatar cupom"></p-button>
+                }
+            </div>
+        }@empty {
+            <p>Nenhum cupom promocional disponível</p>
+        }
+    }
+</section>
