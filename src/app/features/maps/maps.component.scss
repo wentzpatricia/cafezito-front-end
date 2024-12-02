@@ -157,6 +157,7 @@
     label { 
         color: var(--primary-200);
         font-weight: $font-weight-bold;
+        margin-bottom: 10px;
     }
 
     &__btn {
@@ -169,7 +170,19 @@
         }
     
         button { margin: 0 5px !important; }
-    }
+
+        @include tablet {
+
+            flex-direction: column;
     
+            input { 
+                margin: 0;
+                margin-bottom: 20px;
+                width:100%;
+            }
+    
+            button { margin-bottom: 20px !important; width: 100%; }
+        }
+    }
 }
 
