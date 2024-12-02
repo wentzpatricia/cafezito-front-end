@@ -8,7 +8,7 @@
                 <p class="vouchers__card_description">{{item.voucherDescription}}</p>
                 <h3 class="vouchers__card_coffee">{{item.coffeeShop.name}}</h3>
                 @if(item.redeemedAt){
-                    <span>Resgatado</span>
+                    <span class="vouchers__card_redeemed">Resgatado</span>
                 }@else {
                     <p-button size="small" label="Resgatar cupom" (onClick)="redeemVoucher(item.id)"></p-button>
                 }

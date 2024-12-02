@@ -1,21 +1,34 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 
 import { UserVouchersService } from '../../_services/user-vouchers.service';
+import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
+
+import { QrCodeComponent } from '../qr-code/qr-code.component';
 
 @Component({
   selector: 'app-user-vouchers',
   templateUrl: './user-vouchers.component.html',
   styleUrl: './user-vouchers.component.scss'
 })
-export class UserVouchersComponent implements OnInit {
+export class UserVouchersComponent implements OnInit, OnDestroy {
 
   loading: boolean = false;
+  ref: DynamicDialogRef | undefined;
   userVoucher: any [] = [];
 
-  constructor(private userVouchersService: UserVouchersService) {}
-
+  constructor (
+    public dialogService: DialogService,
+    private userVouchersService: UserVouchersService
+  ) {}
+  
   ngOnInit(): void {
     this.listUserVoucher();
+  }
+
+  ngOnDestroy() {
+    if (this.ref) {
+        this.ref.close();
+    }
   }
 
   listUserVoucher() {
@@ -30,6 +43,13 @@ export class UserVouchersComponent implements OnInit {
         console.error(err)
       }
     })
+  }
+
+  show(data: any) {
+    this.ref = this.dialogService.open(QrCodeComponent, { 
+        data: data,
+        header: 'QRCode para validar desconto'
+    });
   }
 
 }

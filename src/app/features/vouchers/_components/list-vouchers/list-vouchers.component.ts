@@ -42,8 +42,7 @@ export class ListVouchersComponent implements OnInit {
   redeemVoucher(voucherId: string) {
     this.loadingSubmit = true;
     this.voucherService.postRedeemVouchers(voucherId).subscribe({
-      next: (res) => { 
-        console.log(res)
+      next: () => { 
 
         this.messageService.add({
           severity: 'success',
@@ -52,6 +51,8 @@ export class ListVouchersComponent implements OnInit {
         });
 
         this.loadingSubmit = false;
+
+        this.listAllVouchers();
 
       },
       error: (err) => {

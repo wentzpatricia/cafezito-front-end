@@ -12,11 +12,16 @@
             </h2>
 
             <h2 class="col">
-                <span>Utilizado</span>
-                {{item.voucher.redeemed ? 'Cupom já utilizado' : 'Aproveite seu cupom o quanto antes!'}}
+                @if (item.voucher.redeemed ) {
+                    <span>Cupom já utilizado</span>
+                }@else {
+                    <p-button size="small" label="Utilizar cupom" severity="secondary" (onClick)="show(item)"></p-button>
+                }
+                
             </h2>
             
         </div>
-        
+    }@empty {
+        <p>Nenhum cupom resgatado ainda.</p>
     }
 </section>
