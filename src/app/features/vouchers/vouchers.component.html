@@ -1,0 +1,24 @@
+<section class="container-vouchers">
+    <header class="header">
+        <div class="header__text">
+            <h2>Promoções e cupons promocionais</h2>
+            <span>Aqui você encontra as melhores ofertas e descontos</span>
+        </div>
+        
+        <figure class="header__img">
+            <img [src]="img" alt="imagem de um letreiro em led da palavra coffee" />
+        </figure>
+    </header>
+
+    <div class="container-vouchers__tab">
+        <p-tabView>
+            <p-tabPanel header="Cupons">
+                <app-list-vouchers></app-list-vouchers>
+            </p-tabPanel>
+            <p-tabPanel header="Meus cupons">
+                <app-user-vouchers></app-user-vouchers>
+            </p-tabPanel>
+        </p-tabView>
+    </div>
+
+</section>

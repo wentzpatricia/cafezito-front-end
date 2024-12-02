@@ -37,12 +37,13 @@
         }
 
         @include mobile {
+          font-size: 30px;
+          margin: 0;
           margin-bottom: 7rem;
         }
       }
 
       img {
-       //border-radius: 0px 0px 300px 300px;
         border-radius: 0% 100% 32% 68% / 79% 0% 100% 21% ;
         max-height: 600px;
         position: absolute;

@@ -20,7 +20,7 @@ export class HeaderComponent {
   data: ISidebarData[] = [
     { routeLink: '/coffe-shop', labelTag: 'cafeterias' },
     { routeLink: '/maps', labelTag: 'mapa' },
-    { routeLink: '', labelTag: 'promoções' },
+    { routeLink: '/vouchers', labelTag: 'promoções' },
   ];
 
   constructor(

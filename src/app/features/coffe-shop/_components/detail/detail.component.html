@@ -9,14 +9,14 @@
     @if(coffeShopDetail){
         <div class="container-environment">
             <aside class="container-environment__infos">
-                <div>
+                <div class="container-environment__infos_text">
                     <h2>{{ coffeShopDetail.name }}</h2>
                     @if(coffeShopDetail.environment && coffeShopDetail.environment.description){
                         <p>{{ coffeShopDetail.environment.description}}</p>
                     }
                 </div>
 
-                <div>
+                <div class="container-environment__infos_address">
                     <div class="container-environment__infos_product">
                         @for(product of coffeShopDetail.product; track product){
                             <span [ngClass]="getClassFromEnum(product)">{{getEnum(product)}}</span>
@@ -29,12 +29,28 @@
                         <h3><span>Endereço</span>{{ coffeShopDetail.address}}</h3>
                     }
                     <div>
-                        <p-button  size="small" label="Ver no mapa"></p-button>
+                        <p-button  size="small" label="Ver no mapa" [routerLink]="'/maps'"></p-button>
                         
                         @if(coffeShopDetail.environment && coffeShopDetail.environment.socialMedias.length > 0){
-                            <span>Redes Sociais</span>
                             @for(item of coffeShopDetail.environment.socialMedias; track item){
-                                <a [routerLink]="item.url">{{item.name}}</a>
+                                <p-button (click)="redirectTo(item.url)" [text]="true">
+                                    @switch(item.name) {
+                                        @case ('Facebook') {
+                                            <i class="pi pi-facebook"></i>
+                                        }
+                                        @case ('Instagram') {
+                                            <i class="pi pi-instagram"></i>
+                                        }
+                                        @case ('Tiktok'){
+                                            <i class="pi pi-tiktok"></i>
+                                        }
+                                        @default {
+                                            {{ item.name }}
+                                        }
+                                        
+                                    }
+                                    
+                                </p-button>
                             }
                         }
                     </div>

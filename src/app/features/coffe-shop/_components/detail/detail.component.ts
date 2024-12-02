@@ -55,5 +55,9 @@ export class DetailComponent implements OnInit {
   getEnumFromCoffeTypes(coffeType: string): string {
     return this.CoffeTypesEnum[coffeType as keyof typeof CoffeTypesEnum] || '';
   }
+
+  redirectTo(url: string): void {
+    window.open(url, '_blank', 'noopener,noreferrer');
+  }
   
 }
