@@ -1,0 +1,39 @@
+@import "../../../../core/scss/mixins.scss";
+@import "../../../../core/scss/variables.scss";
+
+
+.container-user-vouchers {
+    display: flex;
+    color: var(--primary-100);
+
+    &__card {
+        border-bottom: 2px dashed var(--primary-100);
+        display: flex;
+        width: 100%;
+
+        @include tablet {
+            border: 1px solid var(--primary-100);
+            border-radius: 15px;
+            flex-direction: column !important;
+            margin: 10px 0;
+        }
+
+        h2 {
+             display: flex;
+             flex-direction: column;
+             font-size: $font-size-medium;
+             font-weight: $font-weight-normal;
+             
+             span {
+                font-weight: $font-weight-extra-bold;
+             }
+
+             @include tablet {
+                border-bottom: 2px dashed var(--primary-100);
+                flex-direction: row !important;
+                justify-content: space-between;
+                text-align: end;
+            }
+        }
+    }
+}

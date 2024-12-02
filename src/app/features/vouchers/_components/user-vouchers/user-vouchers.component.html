@@ -1,1 +1,22 @@
-<p>user-vouchers works!</p>
+<section class="container-user-vouchers">
+    @for (item of userVoucher; track $index) {
+        <div class="container-user-vouchers__card grid">
+            <h2 class="col">
+                <span>Cafeteria</span>
+                {{item.voucher.coffeeShop.name}}
+            </h2>
+
+            <h2 class="col">
+                <span>Válido até</span>
+                {{item.voucher.validUntil | date:'dd/MM/yyyy'}}
+            </h2>
+
+            <h2 class="col">
+                <span>Utilizado</span>
+                {{item.voucher.redeemed ? 'Cupom já utilizado' : 'Aproveite seu cupom o quanto antes!'}}
+            </h2>
+            
+        </div>
+        
+    }
+</section>
