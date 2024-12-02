@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { MessageService } from 'primeng/api';
+import { SharedEventService } from '../../_services/shared.event.service';
 import { VouchersService } from '../../_services/vouchers.service';
 
 import { ListVouchers } from '../../_models/vouchers.interface';
@@ -18,6 +19,7 @@ export class ListVouchersComponent implements OnInit {
 
   constructor( 
     private messageService: MessageService,
+    private sharedEventService: SharedEventService,
     private voucherService: VouchersService
   ){}
 
@@ -52,6 +54,7 @@ export class ListVouchersComponent implements OnInit {
 
         this.loadingSubmit = false;
 
+        this.sharedEventService.emitVoucherRedeemed();
         this.listAllVouchers();
 
       },

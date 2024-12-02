@@ -4,6 +4,8 @@ import { UserVouchersService } from '../../_services/user-vouchers.service';
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 
 import { QrCodeComponent } from '../qr-code/qr-code.component';
+import { SharedEventService } from '../../_services/shared.event.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-user-vouchers',
@@ -12,17 +14,26 @@ import { QrCodeComponent } from '../qr-code/qr-code.component';
 })
 export class UserVouchersComponent implements OnInit, OnDestroy {
 
+  private subscription: Subscription = new Subscription();
+
   loading: boolean = false;
   ref: DynamicDialogRef | undefined;
   userVoucher: any [] = [];
 
   constructor (
     public dialogService: DialogService,
+    private sharedEventService: SharedEventService,
     private userVouchersService: UserVouchersService
   ) {}
   
   ngOnInit(): void {
     this.listUserVoucher();
+
+    this.subscription.add(
+      this.sharedEventService.voucherRedeemed$.subscribe(() => {
+        this.listUserVoucher();
+      })
+    );
   }
 
   ngOnDestroy() {

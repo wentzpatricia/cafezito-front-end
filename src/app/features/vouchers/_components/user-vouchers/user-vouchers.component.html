@@ -1,27 +1,31 @@
 <section class="container-user-vouchers">
-    @for (item of userVoucher; track $index) {
-        <div class="container-user-vouchers__card grid">
-            <h2 class="col">
-                <span>Cafeteria</span>
-                {{item.voucher.coffeeShop.name}}
-            </h2>
+    @if(loading){
+        <app-loading></app-loading>
+    } @else {
+        @for (item of userVoucher; track $index) {
+            <div class="container-user-vouchers__card grid">
+                <h2 class="col">
+                    <span>Cafeteria</span>
+                    {{item.voucher.coffeeShop.name}}
+                </h2>
 
-            <h2 class="col">
-                <span>Válido até</span>
-                {{item.voucher.validUntil | date:'dd/MM/yyyy'}}
-            </h2>
+                <h2 class="col">
+                    <span>Válido até</span>
+                    {{item.voucher.validUntil | date:'dd/MM/yyyy'}}
+                </h2>
 
-            <h2 class="col">
-                @if (item.voucher.redeemed ) {
-                    <span>Cupom já utilizado</span>
-                }@else {
-                    <p-button size="small" label="Utilizar cupom" severity="secondary" (onClick)="show(item)"></p-button>
-                }
+                <h2 class="col">
+                    @if (item.voucher.redeemed ) {
+                        <span>Cupom já utilizado</span>
+                    }@else {
+                        <p-button size="small" label="Utilizar cupom" severity="secondary" (onClick)="show(item)"></p-button>
+                    }
+                    
+                </h2>
                 
-            </h2>
-            
-        </div>
-    }@empty {
-        <p>Nenhum cupom resgatado ainda.</p>
+            </div>
+        }@empty {
+            <p>Nenhum cupom resgatado ainda.</p>
+        }
     }
 </section>
