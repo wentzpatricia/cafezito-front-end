@@ -14,5 +14,9 @@ export class VouchersService {
         const url = `coffee-shop/coffeeShopId/vouchers`;
         return this.requestsService.executeGet({ url });
     }
-    
+
+    postRedeemVouchers(voucherId: string): Observable<any> {
+        const url = `coffee-shop/coffeeShopId/vouchers/${voucherId}/redeem`;
+        return this.requestsService.executePost({ url });
+    }
 }

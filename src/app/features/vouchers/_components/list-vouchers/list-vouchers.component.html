@@ -10,11 +10,12 @@
                 @if(item.redeemedAt){
                     <span>Resgatado</span>
                 }@else {
-                    <p-button size="small" label="Resgatar cupom"></p-button>
+                    <p-button size="small" label="Resgatar cupom" (onClick)="redeemVoucher(item.id)"></p-button>
                 }
             </div>
         }@empty {
             <p>Nenhum cupom promocional disponível</p>
         }
     }
+    <p-toast />
 </section>
