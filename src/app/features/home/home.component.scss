@@ -27,14 +27,16 @@
     img {       
         position: absolute;
         max-height: 500px;        
-        top: 33%; 
+        top: 30%; 
         right: 0; 
         transform: translateY(-50%); 
         margin-right: 15rem; 
-        filter: opacity(85%);        
-        border-radius: 10px;
-        padding: 5px;        
-        }         
+        filter: opacity(85%);      
+        padding: 5px;       
+
+                
+        }
+                
   
       
       @media (max-width: 768px) {
@@ -54,26 +56,7 @@
               margin: 20px auto; 
              
           }
-      }
-      
-      
-      @media (max-width: 480px) {
-          .container-list {
-              padding: 10px;
-          }
-      
-          .container-list h1 {
-              font-size: clamp(1.5rem, 5vw, 2.5rem); /* Texto ainda menor para celulares */
-          }
-      
-          .container-list img {
-              margin-top: 10px; /* Espaçamento adicional no topo */
-              max-height: 200px; /* Limita o tamanho da imagem */
-          }
-      }
-      
-        
-        
+      }       
 
 }
 .header-home {
@@ -165,8 +148,21 @@
     object-fit: contain; 
     margin-bottom: 16px;
     margin-top: 16px;
-    margin-right: 0;
+    margin-right: 5px;
+    margin-left: 5px;
+
   }
+  @media (max-width: 768px) {
+    .titulo_cafezito {
+      flex-direction: column; 
+      align-items: stretch; 
+    }
+  
+    .titulo_cafezito,
+    .imagens {
+      width: 100%; 
+    }
+  }      
 }
 .descricao {
     display: flex; 
@@ -257,44 +253,6 @@
         }
     }
 }
-
-@media (max-width: 480px) {
-    .container-list {
-        padding: 10px;
-    }
-
-    h1 {
-        font-size: clamp(1.5rem, 5vw, 2.5rem);
-    }
-
-    img {
-        max-width: 100%;
-        height: auto;
-        margin: 0 auto;
-    }
-
-    .descricao, .objetivo {
-        flex-direction: column;
-        align-items: center;
-        gap: 20px;
-    }
-
-    .card {
-        flex: 1 1 100%; /* Faz os cards ocuparem 100% da largura */
-    }
-}
-
-@media (min-width: 768px) and (max-width: 1024px) {
-    .grid-container {
-        justify-content: center; /* Centraliza os itens */
-        gap: 2rem;
-    }
-
-    .card {
-        flex: 1 1 calc(50% - 1rem); /* Ajusta os cards para 2 colunas */
-    }
-}
-
 .diferencial {
   position: absolute;
   width: 100%;

@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 })
 export class HomeComponent { 
   
-  graosHome = '../../../assets/images/graos.png';
+  graosHome = '../../../assets/images/graoshome.png';
   cafezitoHomeUm = '../../../assets/images/cafezito-home-1.png';
   cafezitoHomeDois = '../../../assets/images/cafezito-home-2.png';
   cafezitoHomeTres = '../../../assets/images/cafezito-home-3.png';
