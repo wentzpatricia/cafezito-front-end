@@ -1,0 +1,23 @@
+@import "../../../../core/scss/mixins.scss";
+@import "../../../../core/scss/variables.scss";
+
+.container-qrCode {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+
+    img {
+        width: 200px;
+    }
+
+    p {
+
+        font-weight: $font-weight-normal;
+
+        strong { 
+            color: var(--primary-500);
+            font-weight: $font-weight-extra-bold;
+        }
+    }
+}

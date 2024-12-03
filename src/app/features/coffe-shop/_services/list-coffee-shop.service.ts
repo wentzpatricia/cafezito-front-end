@@ -3,14 +3,17 @@ import { Observable } from 'rxjs';
 
 import { RequestsService } from '../../../core/services/requests.service';
 import { CoffeeShop, CoffeeShopDetail } from '../_models/list-coffee.interface';
+import { ProductTagEnum } from '../_models/coffee-shop.enum';
 
 @Injectable({ providedIn: 'root' })
 export class ListCoffeeShopService {
     
     constructor(private requestsService: RequestsService) {}
     
-    getAllCoffeeShop(): Observable<CoffeeShop[]>{
-        const url = `coffee-shop`;
+    getAllCoffeeShop(tags?: ProductTagEnum[]): Observable<CoffeeShop[]> {
+        const tagsParam = tags && tags.length > 0 ? tags.map(tag => `tags=${tag}`).join('&') : '';
+        const url = tagsParam ? `coffee-shop?${tagsParam}` : `coffee-shop`;
+    
         return this.requestsService.executeGet({ url });
     }
 

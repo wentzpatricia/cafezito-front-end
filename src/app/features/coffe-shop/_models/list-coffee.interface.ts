@@ -9,6 +9,8 @@ export interface CoffeeShop {
     averageRating: number;
     product: ProductTagEnum[]; 
     rating: Rating[];
+    latitude: number;
+    longitude: number;
 }
   
 export interface CoffeeShopDetail extends CoffeeShop {

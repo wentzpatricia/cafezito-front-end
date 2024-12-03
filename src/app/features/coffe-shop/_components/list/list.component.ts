@@ -19,10 +19,10 @@ export class ListComponent implements OnInit {
     this.getAllCoffeeShop();
   }
 
-  getAllCoffeeShop() {
+  getAllCoffeeShop(tags?: ProductTagEnum[]) {
     this.loading = true;
 
-    this.listCoffeeShopService.getAllCoffeeShop().subscribe({
+    this.listCoffeeShopService.getAllCoffeeShop(tags ? tags : undefined).subscribe({
       next: (res: CoffeeShop[]) => {
         this.listCoffeeShop = res;
         this.loading = false;
@@ -34,8 +34,26 @@ export class ListComponent implements OnInit {
     })
   }
 
-  getClassFromEnum(product: string): string {
+  getEnum(product: string): string {
     return this.ProductTag[product as keyof typeof ProductTagEnum] || '';
   }
 
+  getClassFromEnum(product: string): string {
+    const value = this.ProductTag[product as keyof typeof ProductTagEnum];
+    if (!value) return '';
+  
+    return value
+      .toLowerCase() 
+      .normalize('NFD') 
+      .replace(/[\u0300-\u036f]/g, '')
+      .replace(/\s+/g, '-') 
+      .replace(/[^a-z0-9\-]/g, '');
+  }
+  
+
+  onFiltersChanged(activeFilters: ProductTagEnum[]): void {
+    this.loading = true;
+    this.getAllCoffeeShop(activeFilters)
+  }
+  
 }

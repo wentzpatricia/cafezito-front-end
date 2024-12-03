@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
   isLoading: boolean = false;
   hide: boolean = true;
   image = '../../../../assets/images/bg-login.png';
-  logo = '../../../../assets/icones/logo-completo-dark.svg';
+  logo = '../../../../assets/icones/logo-completo-dark.png';
   logoLight = '../../../../assets/icones/logo-light.png';
 
   constructor(
@@ -57,13 +57,12 @@ export class LoginComponent implements OnInit {
     this.loginService.postLogin(this.formLogIn.value).subscribe({
       next: (res) => {
         this.handleLoginSuccess(res);
+        this.isLoading = false;
       },
       error: (err) => {
         this.handleLoginError(err);
-      },
-      complete: () => {
         this.isLoading = false;
-      },
+      }
     });
   }
 

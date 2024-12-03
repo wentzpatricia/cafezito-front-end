@@ -7,7 +7,6 @@ import { CoffeShopRoutingModule } from './coffe-shop-routing.module';
 import { CoffeShopComponent } from './coffe-shop.component';
 import { DetailComponent } from './_components/detail/detail.component';
 import { DialogModule } from 'primeng/dialog';
-import { FilterComponent } from './_components/filter/filter.component';
 import { FormRatingComponent } from './_components/form-rating/form-rating.component';
 import { ListComponent } from './_components/list/list.component';
 import { ListRatingComponent } from './_components/list-rating/list-rating.component';
@@ -19,13 +18,13 @@ import { RatingModule } from 'primeng/rating';
 import { SharedModule } from '../../shared/shared.module';
 import { ToastModule } from 'primeng/toast';
 
+
 import { MessageService } from 'primeng/api';
 
 @NgModule({
   declarations: [
     CoffeShopComponent,
     DetailComponent,
-    FilterComponent,
     FormRatingComponent,
     ListComponent,
     ListRatingComponent
@@ -41,7 +40,7 @@ import { MessageService } from 'primeng/api';
     FormsModule,
     RatingModule,
     SharedModule,
-    ToastModule
+    ToastModule,
   ],
   providers:[MessageService]
 })

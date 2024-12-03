@@ -1,1 +1,1 @@
-![CanvasMVP](src\assets\images\CanvasMVP.jpg)
+![CanvasMVP](src/assets/images/CanvasMVP.jpg)

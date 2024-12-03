@@ -1,0 +1,188 @@
+@import "../../core/scss/mixins.scss";
+@import "../../core/scss/variables.scss";
+
+.container-map {
+    background-color: var(--primary-900);
+    min-height: 100vh;
+    position: absolute;
+    padding-bottom: 40px;
+    top:0;
+    width: 100%;
+
+    header { margin: 150px 0 100px 0;}
+}
+
+.container-infos {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 40px;
+
+    @include tablet {
+        align-items: center;
+        flex-direction: column;
+        justify-content: center;
+        margin: 0;
+    }
+
+    &__imgs {
+        display: flex;
+        flex-wrap: wrap;
+        width: 40%;
+        position: relative;
+        min-height: 500px;
+        overflow: hidden;
+        margin-right: 40px;
+
+        &_cards {
+            @include tablet {
+                align-items: center;
+                display: flex;
+                flex-direction: column;
+            }
+            
+        }
+
+        @include tablet {
+            align-items: center;
+            justify-content: center;
+            margin: 0;
+            width: 90%;
+            
+        }
+
+        &_card-img {
+            display: inline-block;
+            margin: 8px;
+            overflow: hidden;
+            position: relative;
+            text-align: center;
+
+            img {
+                border-radius: 20px;
+                height: 300px;
+                width: 300px;
+                object-fit: cover;
+                transition: filter 0.3s ease, opacity 0.3s ease;
+            }
+
+            &:hover img {
+                filter: blur(5px); 
+                opacity: 0.7;
+            }
+
+            &::before,
+            &::after {
+                filter: blur(5px);
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                content: '';
+                transition: all 0.3s ease;
+                z-index: 1;
+                opacity: 0;
+                transform: scaleY(2);
+            }
+
+            figcaption {
+                background-color: $white;
+                position: absolute;
+                top: 50%;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                border-radius: 0 0 20px 20px;
+                align-items: center;
+                z-index: 1;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                line-height: 1.1em;
+                opacity: 0;
+                z-index: 2;
+                transition-delay: 0.1s;
+                padding: 15px;
+
+                h2 {
+                    font-size: $font-size-normal;
+                    font-weight: $font-weight-bold;
+                }
+
+                p {
+                    font-size: $font-size-normal;
+                    text-wrap: wrap;
+                }
+            }
+        }
+    
+        &_card-img * {
+            box-sizing: border-box;
+            transition: all 0.45s ease;
+            
+        }
+
+        &_card-img:hover::before,
+        &_card-img:hover::after {
+            transform: scale(1);
+            opacity: 1;
+        }
+
+        &_card-img:hover figcaption {
+            opacity: 1;
+        }
+    }
+
+    &__map {
+        width: 70%;
+        ::ng-deep .map-container { 
+            width: 100% !important;
+            border-radius: 0 35px 35px 0;
+
+            @include tablet {
+                border-radius: 35px;
+            }
+        }
+
+        @include tablet {
+            margin: 0 auto;
+            width: 90%;
+        }
+    }
+}
+
+.search-address {
+    width: 100%;
+
+    label { 
+        color: var(--primary-200);
+        font-weight: $font-weight-bold;
+        margin-bottom: 10px;
+    }
+
+    &__btn {
+        align-items: center;
+        display: flex;
+
+        input { 
+            margin: 15px 0;
+            width: 70%;
+        }
+    
+        button { margin: 0 5px !important; }
+
+        @include tablet {
+
+            flex-direction: column;
+    
+            input { 
+                margin: 0;
+                margin-bottom: 20px;
+                width:100%;
+            }
+    
+            button { margin-bottom: 20px !important; width: 100%; }
+        }
+    }
+}
+

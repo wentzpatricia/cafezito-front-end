@@ -25,8 +25,20 @@ export class DetailComponent implements OnInit {
     this.coffeeShopId ? this.getCoffeeShopById(this.coffeeShopId) : '';
   }
 
-  getClassFromEnum(product: string): string {
+  getEnum(product: string): string {
     return this.ProductTag[product as keyof typeof ProductTagEnum] || '';
+  }
+
+  getClassFromEnum(product: string): string {
+    const value = this.ProductTag[product as keyof typeof ProductTagEnum];
+    if (!value) return '';
+  
+    return value
+      .toLowerCase() 
+      .normalize('NFD') 
+      .replace(/[\u0300-\u036f]/g, '')
+      .replace(/\s+/g, '-') 
+      .replace(/[^a-z0-9\-]/g, '');
   }
 
   getCoffeeShopById(id:string) {
@@ -42,6 +54,10 @@ export class DetailComponent implements OnInit {
 
   getEnumFromCoffeTypes(coffeType: string): string {
     return this.CoffeTypesEnum[coffeType as keyof typeof CoffeTypesEnum] || '';
+  }
+
+  redirectTo(url: string): void {
+    window.open(url, '_blank', 'noopener,noreferrer');
   }
   
 }
