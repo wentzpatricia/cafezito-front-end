@@ -22,6 +22,8 @@
       @include tablet {
         width: 100%;
         padding: 20px;
+        font-size: 40px;
+        margin-top: 45px;
       }
       
   }
@@ -320,6 +322,7 @@ width: 100%;
         
         @include tablet {
           width: 100%;
+          font-size: 40px
         }
     }
     img{
@@ -329,7 +332,7 @@ width: 100%;
       }
 
       @include tablet {
-        width: 100%;
+        width: 300px;
       }
       
     @include tablet {
