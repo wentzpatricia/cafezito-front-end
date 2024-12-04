@@ -9,7 +9,13 @@
     top:0;
     width: 100%;
 
-    header { margin: 150px 0 100px 0;}
+    header { 
+        margin: 150px 0 100px 0;
+
+        @include tablet {
+            display: none;
+        }
+    }
 }
 
 .container-infos {
@@ -36,8 +42,8 @@
         &_cards {
             @include tablet {
                 align-items: center;
-                display: flex;
-                flex-direction: column;
+                display: none;
+                //flex-direction: column;
             }
             
         }
@@ -146,6 +152,7 @@
 
         @include tablet {
             margin: 0 auto;
+            margin-top: -95px;
             width: 90%;
         }
     }

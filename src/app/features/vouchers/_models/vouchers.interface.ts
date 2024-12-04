@@ -14,4 +14,11 @@ export interface ListVouchers {
         name: string;
         address: string;
     }
+    users: UserVoucher[];
+}
+
+export interface UserVoucher {
+    userId: string;
+    redeemedAt: Date; 
+    voucherId: string;
 }
