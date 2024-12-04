@@ -9,8 +9,8 @@
     <div class="titulo">
         <div class ="titulo_cafezito">
             <h1>CAFEZITO</h1>
-            <img [src]="cafezitoHomeUm" alt="figura1" style="width:350px " p-6 >
-            <img [src]="cafezitoHomeDois" alt="figura2" style="width:350px">
+            <img [src]="cafezitoHomeUm" alt="figura1" style="width:600px " p-6 >
+            <img [src]="cafezitoHomeDois" alt="figura2" style="width:600px">
         </div>
         <div class="imagens">            
             <img [src]="cafezitoHomeTres" alt="figura3" >
@@ -47,23 +47,18 @@
               cafeterias!
             </strong>          
         </div>
-        <img [src]="aguaGas" alt="Café e Agua com Gas" class="objetivo_imagem" style="width:500px" >                                
+        <img [src]="aguaGas" alt="Café e Agua com Gas" class="objetivo__imagem" style="width:500px" >                                
     </div>
     <div class="diferencial">
     <h2>Nossos Diferenciais</h2>
-    </div>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
+    </div>    
     <section class="diferenciais">                    
         <div class="grid-container">
           <!-- Card 1 -->
           <div class="card">
             <div class="card">
               <div class="flex align-items-center justify-content-center mb-3">
-                <i class="pi pi-objects-column" style="font-size: 2rem"></i>
+                <i class="pi pi-objects-column" style="font-size: 3rem; color: #f2f2f2"></i>
               </div>
               <h3 class="text-center">Plataforma Integrada</h3>
               <p class="text-justify">
@@ -78,7 +73,7 @@
           <div class="card">
             <div class="card">
               <div class="flex align-items-center justify-content-center mb-3">
-              <i class="pi pi-heart" style="font-size: 2rem"></i>
+              <i class="pi pi-heart" style="font-size: 3rem; color: #f2f2f2"></i>
               </div>
               <h3 class="text-center">Experiência Personalizada</h3>
               <p class="text-justify">
@@ -93,7 +88,7 @@
           <div class="card">
             <div class="card">
               <div class="flex align-items-center justify-content-center mb-3">
-                <i class="pi pi-book" style="font-size: 2rem"></i>
+                <i class="pi pi-book" style="font-size: 3rem; color: #f2f2f2"></i>
               </div>
               <h3 class="text-center">Informações Abrangentes</h3>
               <p class="text-justify">
@@ -107,7 +102,7 @@
           <div class="card">
             <div class="card">
               <div class="flex align-items-center justify-content-center mb-3">
-                <i class="pi pi-tags" style="font-size: 2rem"></i>
+                <i class="pi pi-tags" style="font-size: 3rem; color: #f2f2f2"></i>
               </div>
               <h3 class="text-center">Vouchers e Ofertas</h3>
               <p class="text-justify">
@@ -120,7 +115,7 @@
           <div class="card">
             <div class="card">
               <div class="flex align-items-center justify-content-center mb-3">
-                <i class="pi pi-users" style="font-size: 2rem"></i>
+                <i class="pi pi-users" style="font-size: 3rem; color: #f2f2f2"></i>
               </div>
               <h3 class="text-center">Interatividade e Comunidade</h3>
               <p class="text-justify">
@@ -134,7 +129,7 @@
           <div class="card">
             <div class="card">
               <div class="flex align-items-center justify-content-center mb-3">
-                <i class="pi pi-map-marker" style="font-size: 2rem"></i>
+                <i class="pi pi-map-marker" style="font-size: 3rem; color: #f2f2f2"></i>
               </div>
               <h3 class="text-center">Facilidade de Navegação</h3>
               <p class="text-justify">
@@ -147,17 +142,13 @@
         </div>
       </section>
       <div class="homem-cafeteria">        
-          <h1>Pronto para conhecer o Cafezito?</h1>
-          <button class="btn" (click)="goToRegister()">Criar conta</button>        
-        <div class="image-container">
-          <div class="circle">
-            <img [src]="homemCafeteria" alt="Imagem de uma cafeteria" >
-          </div>
-        </div>
+          <h1>Pronto para conhecer o Cafezito?</h1>                
+          <img [src]="homemCafeteria" alt="Imagem de uma cafeteria" >
       </div>
-      <div class = "logos">
-        <i class="pi pi-facebook" style="font-size: 2rem"></i>        
-        <i class="pi pi-instagram"  style="font-size: 2rem"></i>
+      <div class="criar_conta">
+        <button class="btn" (click)="goToRegister()">Criar conta</button> 
+      </div>
+      <div class = "logos">        
       </div>
              
          

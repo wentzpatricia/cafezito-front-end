@@ -16,7 +16,7 @@ export class HomeComponent {
   cafezitoHomeQuatro = '../../../assets/images/cafezito-home-4.png';
   cafezitoHomeCinco = '../../../assets/images/cafezito-home-5.png';
   placaCoffee = '../../../assets/images/placa-coffee.png';
-  homemCafeteria = '../../../assets/images/homem-cafeteria.png';
+  homemCafeteria = '../../../assets/images/homem-cafeteria1.png';
   aguaGas = '../../../assets/images/agua-gas-cafe.png';
   logo = '../../../assets/icones/logo-dark.png'
 
