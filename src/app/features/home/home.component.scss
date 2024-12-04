@@ -2,64 +2,52 @@
 @import "../../core/scss/variables.scss";
 
 .container-list {
-    background-color: #896A50;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    padding-bottom: 60px;
-    width: 100%;
-    
-    h1 {
-        color: #DAD1C8;
-        font-size: 70px;
-        font-weight: 500px;
-        letter-spacing: 1px;
-        margin-bottom: 08rem;
-        margin-left: 8px;
-        padding: 40px 100px;
-        position: relative;
-        width: 50%;
-        z-index: 2;
-        
-    }    
-    
-
-    img {       
-        position: absolute;
-        max-height: 500px;        
-        top: 30%; 
-        right: 0; 
-        transform: translateY(-50%); 
-        margin-right: 15rem; 
-        filter: opacity(85%);      
-        padding: 5px;       
-
-                
-        }
-                
+  background-color: #896A50;
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;  
+  align-items: center;
+  justify-content: space-evenly;
+  width: 100%;
+  padding-bottom: 50px;
   
+  h1 {
+      color: #DAD1C8;
+      font-size: 70px;
+      font-weight: 500px;
+      letter-spacing: 1px;      
+      padding: 40px 0px;        
+      width: 50%;
       
-      @media (max-width: 768px) {
-          .container-list {
-              padding: 20px;
-          }
+      @include tablet {
+        width: 100%;
+        padding: 20px;
+      }
       
-          .container-list h1 {
-              font-size: clamp(2rem, 5vw, 3.5rem); 
-              width: 100%;              
-              margin: 0 auto; 
-              padding: 20px;
-          }
+  }
+  img { 
+      width: 17%;       
+      max-height: 20%;        
+      filter: opacity(85%);
+      padding: 0px 20px;
+            
       
-          .container-list img {              
-              max-width: 100%;              
-              margin: 20px auto; 
-             
-          }
-      }       
+      
+      @include tablet {
+        width: 100%;
+      }     
 
+              
+    }
+  @include tablet{
+    font-size: 40px;
+    justify-content: center;
+    
+  }           
 }
 .header-home {
+    display: flex;
+    flex-wrap: wrap;
     background-color: #896A50;
     position: absolute;
     top:10px;
@@ -69,8 +57,7 @@
       padding: 0.75rem 1.5rem;      
       border: none; 
       background-color: #896A50;     
-      margin-top: 5px;
-      margin-bottom: 8rem;
+      margin-top: 5px;      
       margin-left: 120px;
       margin-right: 10px;
       color: #DAD1C8;
@@ -78,14 +65,14 @@
       font-weight: bold;
       cursor: pointer;     
 
-    }       
+      }         
 
         
 }
 .titulo {
     background-color: #F2F2F2;
-    display: flex; 
-    flex-direction: column; 
+    display: flex;
+    flex-wrap: wrap;
     width: 100%; 
     gap: 14px; 
   
@@ -95,8 +82,8 @@
     display: flex; 
     justify-content: space-between; 
     align-items: center; 
-    width: 90%; 
-    height: 200px;
+    width: 100%; 
+    height: 180px;
     padding: 0; 
     box-sizing: border-box; 
     
@@ -104,28 +91,24 @@
   
   .titulo_cafezito h1 {
     color: #896A50;
-    font-size: 170px;
-    font-weight: 900px;
+    font-size: 170px;    
     letter-spacing: 2px;
-    margin-bottom: 08rem;
-    margin-left: 7.5px;
-    padding: 40px 80px;
+    padding: 0px 30px;
     position: relative;
-    width: 100%;
-    z-index: 2;
+    width: 100%;    
   }
   
   .titulo_cafezito img {
     display: flex; 
     justify-content: space-between; 
     align-items: center; 
-    width: 100%; 
-    padding: 0 ; 
+    width: 100%;     
     gap: 16px; 
     box-sizing: border-box; 
     margin-bottom: 30px;
-    margin-top: 50px;
+    margin-top: 30px;
     margin-right:60px;
+    margin-left: 40px;
     object-fit: cover;
     height: auto;
     
@@ -152,77 +135,71 @@
     margin-left: 5px;
 
   }
-  @media (max-width: 768px) {
-    .titulo_cafezito {
-      flex-direction: column; 
-      align-items: stretch; 
-    }
-  
-    .titulo_cafezito,
-    .imagens {
-      width: 100%; 
-    }
-  }      
+  @include tablet {
+    display: none ;
+  }
 }
 .descricao {
     display: flex; 
-    align-items: center; 
-    gap: 250px; 
+    flex-wrap: wrap;
+    align-items: center;    
+    justify-content: space-between;
     background-color: #896A50; 
-    padding: 0; 
-    height: 100%;        
     width: 100%;
     
   
     &__imagem {
-      width: 35%; 
+      width: 40%; 
       height: auto; 
-      object-fit: cover; 
-      border-radius: 8px; 
+      object-fit: cover;      
+      
+      @include tablet {
+        width: 100%;
+        padding: 0px;
+      }     
+      
     }
   
     &__texto {
       width: 50%; 
-      font-size: 2rem;
+      font-size: 1.75rem;
       font-weight: 200px; 
       line-height: 1.5; 
       color:#DAD1C8;       
-      padding: 40px 100px;
-      position: relative; 
-      z-index: 2;    
+      padding: 40px 70px 40px 30px;
+      text-align: justify;
+      
+      @include tablet {
+        width: 100%;
+      }     
       
     }
-    @media (max-width: 768px) {
-        .descricao {
-          flex-direction: column; 
-          align-items: stretch; 
-        }
-      
-        .descricao__imagem,
-        .descricao__texto {
-          width: 100%; 
-        }
-      }      
+
+    @include tablet{
+      padding: 30px;
+    }    
 }
 
 .objetivo {
-    display: flex; 
-    align-items: center; 
-    gap: 250px; 
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;     
+    gap: 150px; 
     background-color:  #f5f5f5; 
-    padding: 50px; 
+    padding: 70px; 
     top: 30px;               
     width: 100%;
      
     
 
-    &__texto {
-        width: 100%; 
-        font-size: 1.5rem;        
+    &__texto {         
+        font-size: 1.75rem;        
         line-height: 2rem; 
-        color:#a67c5c;            
-        z-index: 2; 
-        left: 50 px;      
+        color:#a67c5c;
+        width: 50%;
+        text-align: justify;       
+              
     
         strong {
             font-size: 2rem;
@@ -230,38 +207,42 @@
             color: #a67c5c; 
             font-weight: bold; 
         }
+        @include tablet {
+          width: 100%;          
+        } 
     } 
   
     &__imagem {
         width: 30%;        
         border-radius: 8px; 
         top: 30px;        
-        height: 50%;   
-      
-    }
-    @media (max-width: 768px) {
-        flex-direction: column;
-    
-        &__imagem,
-        &__texto {
+        height: 50%; 
+
+        @include tablet {
           width: 100%;
-        }
-    
-        &__texto {
-          text-align: center;
-          font-size: 1rem;
-        }
+          padding: 35px;          
+        }       
     }
-}
-.diferencial {
-  position: absolute;
-  width: 100%;
-  text-align: center;        
+    @include tablet {
+      justify-content: center;
+                
+    }  
+    
+} 
+.diferencial {  
+  width: 100%;          
   background-color: #BFAE9F;
   font-size: 1.5rem; 
   font-weight: bold;
   color:#261308;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
  
+  @include tablet {
+    width: 100%;
+  }
 }
 
 .diferenciais {
@@ -273,17 +254,25 @@ padding: 0px;
 top: 0px;               
 width: 100%;
 
+@include tablet {
+  width: 100%;
+}
+
 }
 
 .grid-container {
   background-color: #BFAE9F;
+  align-items: center;
   display: flex;
   flex-wrap: wrap; 
   justify-content: space-between; 
-  max-width: 1700px;
-  top: 50px;
+  max-width: 1700px;  
   margin: 0 auto;
   gap: 1.4rem; 
+
+  @include tablet {
+    width: 100%;
+  }
    
 }
 
@@ -295,90 +284,104 @@ width: 100%;
   font-size: 20px;
   letter-spacing: 1px;
   text-align: justify; 
+
+  @include tablet {
+    width: 100%;
+  }
 }
 .linha-divisoria{
   width: 100%;
   height: 1px;
   background-color: #896A50;
   margin: 20px 0;
+
+  @include tablet {
+    display: none;
+  }
 }
 
 .homem-cafeteria {
-  background-color: #896A50;
-  height: 50%;
+  background-color: #896A50;  
   display: flex;
-  flex-direction: column;
-  padding: 0px;
-  width: 100%; 
+  flex-wrap: wrap; 
+  align-items: center; 
+  padding:20px 70px 5px 70px;
+  width: 100%;  
+  justify-content: space-evenly;
+
       
 
     h1 {
         color: #DAD1C8;
-        font-size: 70px;
-        font-weight: 500px;
-        letter-spacing: 1px;
-        margin-bottom: 70px;
-        margin-left: 8px;
-        margin-top: 70px;
-        padding: 40px 100px;
-        position: relative;
-        width: 50%;
-        z-index: 2;
+        font-size: 70px;        
+        letter-spacing: 1px;        
+        padding: 0px 30px;        
+        width: 65%;
+        
+        @include tablet {
+          width: 100%;
+        }
     }
+    img{
+      width: 500px;        
+      filter: opacity(85%);      
 
-    .btn {
-      padding: 0.75rem 1.5rem;
-      background-color: #DAD1C8;
-      border: none;
-      border-radius: 5px;
-      margin-bottom: 8rem;
-      margin-left: 120px;
-      margin-right: 100rem;
-      color: #210F07;
-      font-size: 1rem;
-      cursor: pointer;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      transition: background-color 0.3s;      
-      }  
-      
-
-  .image-container {
-    position: absolute;
-    max-height: 300px;   
-    right: 0;  
-    margin-right: 15rem; 
-    margin-bottom: 5px;
-    margin-top: 100px;
-    filter: opacity(85%);        
-    border-radius: 10px;
-    padding: 0px;   
-
-    .circle {
-      width: 500px;
-      height: 500px;
-      border-radius: 50%;
-      overflow: hidden;
-      box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
-
-      img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
       }
+
+      @include tablet {
+        width: 100%;
+      }
+      
+    @include tablet {
+        width: 100%;
+        justify-content: center;
     }
-  }
-}
+      
+    } 
+  
+
+.criar_conta{
+  background-color: #896A50;
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;  
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  padding-left: 150px;
+
+  @include tablet {
+    width: 100%;
+  }     
+  
+
+
+  .btn {
+    padding: 0.75rem 1.5rem;
+    background-color: #DAD1C8;
+    border: none;
+    border-radius: 5px;      
+    color: #210F07;
+    font-size: 1.25rem;      
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s;
+    
+    @include tablet {
+      margin-top: 100px;
+    }     
+    
+ } 
+ 
+} 
 .logos{
     background-color: #896A50;
     display:flex;
     position: absolute;    
     margin-right:15rem;        
     margin-bottom: 20px;       
-    width: 100%;    
-    justify-content: flex-end; 
-    gap: 20px; 
+    width: 100%;   
     padding: 10px 20px; 
-    color:#DAD1C8; 
+    
 }
           
  
