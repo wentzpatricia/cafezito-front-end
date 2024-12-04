@@ -19,6 +19,7 @@
 
 O projeto “Cafézito” foi criado com o propósito de revolucionar a experiência de quem visita cafeterias em Porto Alegre. Nossa aplicação web responsiva centraliza, em um só lugar, todas as informações necessárias para encontrar o café perfeito, alinhado às preferências individuais dos usuários. Com um design intuitivo e funcionalidades personalizadas, oferecemos uma busca fácil e eficiente por locais ideais.
 
+Link para a documentação no Medium:
 [Medium](https://medium.com/@mariana.odreyer/caf%C3%A9zito-plataforma-online-para-descobrir-cafeterias-em-porto-alegre-696f6f2a98fe)
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.8.
