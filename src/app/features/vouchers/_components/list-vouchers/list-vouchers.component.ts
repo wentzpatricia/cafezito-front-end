@@ -27,6 +27,13 @@ export class ListVouchersComponent implements OnInit {
     this.listAllVouchers();
   }
 
+  isVoucherRedeemed(voucherId: string): boolean {
+    return this.listVouchers.some((voucher) =>
+      voucher.users.some((user) => user.voucherId === voucherId)
+    );
+  }
+  
+
   listAllVouchers() {
     this.loading = true;
     this.voucherService.getAllVouchers().subscribe({
